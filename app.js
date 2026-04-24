@@ -182,7 +182,7 @@ const CUPONES_GAMER = [
   { emoji: "🎯", titulo: "Cupón para 1v1",                             descripcion: "Te dejo ganar... o capaz no. Spoiler: te voy a dejar ganar.",                                  efecto: ["efecto-pixels", "efecto-tilt", "efecto-brillo"] },
   { emoji: "👻", titulo: "Cupón para Phasmophobia",                    descripcion: "Volvemos a donde empezó todo 👻 pero esta vez te agarro más fuerte… porque ya sé que no te quiero soltar 😳", efecto: ["efecto-pixels", "efecto-magnetico", "efecto-brillo"] },
   { emoji: "🎥", titulo: "Cupón para Stremearte",                      descripcion: "Activa este cupón y te voy a stremear cualquier cosa que me pidas. Me convierto en el mejor jugador del mundo… o al menos hago que parezca 😎 (incluye dedicarte cada kill… si es que hay alguna)..", efecto: ["efecto-pixels", "efecto-magnetico", "efecto-brillo"] },
-  { emoji: "img/gems.png", emojiBackup: "💎",titulo: "Cupón para DropLegendario",        descripcion: "Este cupón otorga un boost de gemas en Gekshin Sqquadra para cumplir tus deseos mas cursed o mas blessed ✨.(la cantidad depende del bolsillo del susodicho 🥹)",efecto: ["efecto-ki", "efecto-tilt", "efecto-brillo"] },
+  { emoji: "img/gems.png", emojiBackup: "💎",titulo: "Cupón para DropLegendario",        descripcion: "Este cupón otorga un boost de gemas en Gekshin Sqquadra para cumplir tus deseos mas cursed o mas blessed ✨.(la cantidad depende del bolsillo del susodicho 🥹)",efecto: ["efecto-ki", "efecto-magnetico", "efecto-brillo", "efecto-pixels"] },
 ];
 /* ────────────────────────────────────────────────
    CUPONES COTIDIANOS
@@ -1276,7 +1276,11 @@ grilla.addEventListener("click", e => {
   cuponEnCanje = idx;
   const esSexy = v.tipo === "sexy";
 
-  modalEmoji.textContent     = v.emoji;
+  if (v.emoji.includes("/") || v.emoji.endsWith(".png") || v.emoji.endsWith(".jpg")) {
+  modalEmoji.innerHTML = `<img src="${v.emoji}" style="width:2.5rem;height:2.5rem;object-fit:contain;" onerror="this.replaceWith(document.createTextNode('${v.emojiBackup || '✨'}'))">`;
+} else {
+  modalEmoji.textContent = v.emoji;
+}
   modalTitulo.textContent    = `¿Canjeás "${v.titulo}"?`;
   modalSubtitulo.textContent = esSexy
     ? "Se va a marcar como usado y me va a llegar la solicitud 🔥"
