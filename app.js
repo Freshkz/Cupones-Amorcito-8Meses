@@ -1576,7 +1576,7 @@ btnConfirmar.addEventListener("click", async () => {
 
   try {
     await emailjs.send(CONFIG_EMAIL.SERVICE_ID, CONFIG_EMAIL.TEMPLATE_ID, {
-      cupon_emoji:  v.emoji,
+      cupon_emoji: (v.emoji.includes("/") ? (v.emojiBackup || "🎁") : v.emoji),
       cupon_titulo: v.titulo,
       cupon_tipo:   v.tipo === "sexy" ? "🔥 Cupón Sexy" : v.tipo === "gamer" ? "🎮 Cupón Gamer" : v.tipo === "cotidiano" ? "☀️ Cupón Cotidiano" : "💌 Cupón Romántico",
       fecha:        new Date().toLocaleString("es-AR"),
