@@ -758,7 +758,9 @@ body.gamer-mode .vale .vale-tachado {
 }
 
 /* efecto-shine: destello diagonal */
-.vale.efecto-shine { overflow: hidden; }
+.vale.efecto-shine .vale-cuerpo {
+  overflow: hidden;
+}
 .vale.efecto-shine .vale-cuerpo::after {
   content: '';
   position: absolute;
@@ -1758,4 +1760,93 @@ body.gamer-mode .bienvenida-btn     { background: linear-gradient(135deg, var(--
 @keyframes customPermanente {
   0%, 100% { transform: translateY(0)   rotate(-5deg) scale(1);    opacity: 0.5; }
   50%       { transform: translateY(-8px) rotate(5deg) scale(1.15); opacity: 0.9; }
+}
+
+@keyframes customPixelExplode {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) rotate(var(--rot)) scale(0.2);
+    opacity: 0;
+  }
+}
+
+
+/* ─── EFECTO KI / AURA GOKU ────────────────────── */
+.vale.efecto-ki {
+  overflow: visible !important;
+}
+
+/* Partículas de ki que orbitan */
+.ki-particula {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+  font-size: 1.2rem;
+  animation: kiOrbita linear infinite;
+  opacity: 0;
+}
+
+@keyframes kiOrbita {
+  0%   { opacity: 0; transform: translate(var(--kx), var(--ky)) scale(0.5); }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--kx2), var(--ky2)) scale(1.3); }
+}
+
+/* Anillo de aura exterior pulsante */
+
+@keyframes kiAura {
+  0%, 100% { opacity: 0.4; transform: scale(1);    filter: blur(4px); }
+  50%       { opacity: 1;   transform: scale(1.04); filter: blur(6px); }
+}
+
+/* Destello central */
+.vale.efecto-ki .vale-emoji {
+  animation: kiCentro 2s ease-in-out infinite;
+}
+@keyframes kiCentro {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(100,200,255,0.6)); }
+  50%       { filter: drop-shadow(0 0 16px rgba(100,200,255,1)) drop-shadow(0 0 30px rgba(150,230,255,0.5)); }
+}
+
+/* Rayo exterior que da vueltas */
+.ki-rayo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9;
+  animation: kiRayoGiro linear infinite;
+  transform-origin: 0 0;
+}
+.ki-rayo::before {
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: 20px;
+  background: linear-gradient(to bottom, rgba(100,200,255,0.9), transparent);
+  border-radius: 3px;
+  top: -110%;
+  left: -1.5px;
+  filter: blur(1px);
+}
+@keyframes kiAura {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.03); }
+}
+@keyframes kiPulso {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50%       { opacity: 1;   transform: scale(1.3); }
+}
+@keyframes kiRayoGiro {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }

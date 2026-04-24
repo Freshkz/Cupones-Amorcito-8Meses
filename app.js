@@ -56,8 +56,9 @@ const CONFIG_TEMPORIZADOR = {
   const EFECTOS_CUSTOM = {
     "Cupón para DropLegendario": {
       items: ["img/esfera.png", "img/logo.png", "img/icon_skill1.png", "img/icon_transformation1.png", "💎"],
-      cantidad: 6,
+      cantidad: 12,
       tamaño: "1.4rem",
+      modo: "pixel",
     },
     // Para agregar otro cupón:
     // "Título exacto del cupón": {
@@ -65,6 +66,14 @@ const CONFIG_TEMPORIZADOR = {
     //   cantidad: 5,
     //   tamaño: "1.2rem",
     // },
+
+                                              //"Cupón para raid especial": {   // ← ejemplo con modo pixel
+                                              //items: ["img/gems.png", "⚔️", "💥", "img/icon_skill1.png"],
+                                              //cantidad: 12,
+                                                //tamaño: "1rem",
+                                                //modo: "pixel",     // ← este es el nuevo modo
+                                              //},
+                                          //};
   };
 
 
@@ -173,7 +182,7 @@ const CUPONES_GAMER = [
   { emoji: "🎯", titulo: "Cupón para 1v1",                             descripcion: "Te dejo ganar... o capaz no. Spoiler: te voy a dejar ganar.",                                  efecto: ["efecto-pixels", "efecto-tilt", "efecto-brillo"] },
   { emoji: "👻", titulo: "Cupón para Phasmophobia",                    descripcion: "Volvemos a donde empezó todo 👻 pero esta vez te agarro más fuerte… porque ya sé que no te quiero soltar 😳", efecto: ["efecto-pixels", "efecto-magnetico", "efecto-brillo"] },
   { emoji: "🎥", titulo: "Cupón para Stremearte",                      descripcion: "Activa este cupón y te voy a stremear cualquier cosa que me pidas. Me convierto en el mejor jugador del mundo… o al menos hago que parezca 😎 (incluye dedicarte cada kill… si es que hay alguna)..", efecto: ["efecto-pixels", "efecto-magnetico", "efecto-brillo"] },
-  { emoji: "img/gems.png", emojiBackup: "💎",titulo: "Cupón para DropLegendario",        descripcion: "Este cupón otorga un boost de gemas en Gekshin Sqquadra para cumplir tus deseos mas cursed o mas blessed ✨.(la cantidad depende del bolsillo del susodicho 🥹)",efecto: ["efecto-pixels", "efecto-tilt", "efecto-brillo"] },
+  { emoji: "img/gems.png", emojiBackup: "💎",titulo: "Cupón para DropLegendario",        descripcion: "Este cupón otorga un boost de gemas en Gekshin Sqquadra para cumplir tus deseos mas cursed o mas blessed ✨.(la cantidad depende del bolsillo del susodicho 🥹)",efecto: ["efecto-ki", "efecto-tilt", "efecto-brillo"] },
 ];
 /* ────────────────────────────────────────────────
    CUPONES COTIDIANOS
@@ -878,7 +887,6 @@ function iniciarEfectoChispas() {
 }
 
 
-
 function iniciarEfectoCustom() {
   document.querySelectorAll(".vale").forEach(card => {
     if (card._customInit) return;
@@ -886,46 +894,167 @@ function iniciarEfectoCustom() {
     const tituloEl = card.querySelector(".vale-titulo");
     if (!tituloEl) return;
 
-    const config = EFECTOS_CUSTOM[tituloEl.textContent.trim()];
+    const titulo = tituloEl.textContent.trim();
+    const config = EFECTOS_CUSTOM[titulo];
     if (!config) return;
 
+    console.log("✅ efecto custom encontrado para:", titulo);
     card._customInit = true;
     card.style.overflow = "visible";
 
-    function crearItem() {
+    function crearElemento() {
       const src = config.items[Math.floor(Math.random() * config.items.length)];
       const el  = document.createElement("span");
+      const esPixel = config.modo === "pixel";
 
-      el.style.cssText = `
-        position: absolute;
-        left: ${5 + Math.random() * 85}%;
-        top: ${10 + Math.random() * 65}%;
-        pointer-events: none;
-        z-index: 10;
-        font-size: ${config.tamaño || "1.2rem"};
-        animation: customFlotante ${1.5 + Math.random() * 1.5}s ease forwards;
-      `;
+      if (esPixel) {
+        const rect   = card.getBoundingClientRect();
+        const startX = rect.left + Math.random() * rect.width;
+        const startY = rect.top  + Math.random() * rect.height;
+        el.style.cssText = `
+          position: fixed;
+          left: ${startX}px;
+          top: ${startY}px;
+          pointer-events: none;
+          z-index: 9999;
+          font-size: ${config.tamaño || "1.4rem"};
+          --dx: ${(Math.random() - 0.5) * 300}px;
+          --dy: ${(Math.random() - 0.5) * 300}px;
+          --rot: ${Math.random() * 720 - 360}deg;
+          animation: customPixelExplode ${0.8 + Math.random() * 0.8}s ease forwards;
+        `;
+      } else {
+        el.style.cssText = `
+          position: absolute;
+          left: ${5 + Math.random() * 85}%;
+          top: ${10 + Math.random() * 65}%;
+          pointer-events: none;
+          z-index: 10;
+          font-size: ${config.tamaño || "1.2rem"};
+          animation: customFlotante ${1.5 + Math.random() * 1.5}s ease forwards;
+        `;
+      }
 
       if (src.includes("/")) {
-        el.innerHTML = `<img src="${src}" 
-          style="width:${config.tamaño || "1.2rem"};height:${config.tamaño || "1.2rem"};object-fit:contain;display:block;"
+        el.innerHTML = `<img src="${src}"
+          style="width:${config.tamaño || "1.4rem"};height:${config.tamaño || "1.4rem"};object-fit:contain;display:block;"
           onerror="this.replaceWith(document.createTextNode('✨'))">`;
       } else {
         el.textContent = src;
       }
 
-      card.appendChild(el);
-      setTimeout(() => el.remove(), 3000);
+      if (esPixel) {
+        document.body.appendChild(el);
+      } else {
+        card.appendChild(el);
+      }
+
+      setTimeout(() => el.remove(), 1800);
     }
 
     card.addEventListener("mouseenter", () => {
-      for (let i = 0; i < (config.cantidad || 5); i++) {
-        setTimeout(() => crearItem(), i * 100);
+      console.log("🖱️ hover en:", titulo);
+      const cantidad = config.cantidad || 5;
+      for (let i = 0; i < cantidad; i++) {
+        setTimeout(() => crearElemento(), i * 80);
       }
     });
   });
 }
 
+
+function iniciarEfectoKi() {
+  document.querySelectorAll(".efecto-ki").forEach(card => {
+    if (card._kiInit) return;
+    card._kiInit = true;
+    card.style.overflow = "visible";
+    card.style.position = "relative";
+
+    const w = card.offsetWidth  || 280;
+    const h = card.offsetHeight || 300;
+    const cx = w / 2;
+    const cy = h / 2;
+
+    // Aura de fondo — div separado, no ::before
+    const aura = document.createElement("div");
+    aura.style.cssText = `
+      position: absolute;
+      inset: -12px;
+      border-radius: 22px;
+      background: radial-gradient(ellipse at center,
+        transparent 35%,
+        rgba(100,200,255,0.3) 65%,
+        rgba(100,200,255,0.1) 85%,
+        transparent 100%
+      );
+      pointer-events: none;
+      z-index: 0;
+      animation: kiAura 2s ease-in-out infinite;
+    `;
+    card.appendChild(aura);
+
+    // Partículas orbitando
+    for (let i = 0; i < 10; i++) {
+      const angulo = (360 / 10) * i;
+      const rad    = (angulo * Math.PI) / 180;
+      const radioX = cx + 18;
+      const radioY = cy + 18;
+
+      const p = document.createElement("div");
+      const dur   = 2 + Math.random() * 1.5;
+      const delay = -(dur / 10) * i;
+      const size  = 5 + Math.random() * 5;
+
+      const x = cx + Math.cos(rad) * radioX - size / 2;
+      const y = cy + Math.sin(rad) * radioY - size / 2;
+
+      p.style.cssText = `
+        position: absolute;
+        left: ${x}px;
+        top: ${y}px;
+        width: ${size}px;
+        height: ${size}px;
+        border-radius: 50%;
+        background: rgba(100,200,255,0.9);
+        box-shadow: 0 0 8px rgba(100,200,255,1), 0 0 16px rgba(100,200,255,0.6);
+        pointer-events: none;
+        z-index: 11;
+        animation: kiPulso ${dur}s ease-in-out ${delay}s infinite;
+      `;
+      card.appendChild(p);
+    }
+
+    // Rayos girando
+    [{ dur: 8, dir: "normal" }, { dur: 5, dir: "reverse" }, { dur: 12, dir: "normal" }].forEach(({ dur, dir }) => {
+      const rayo = document.createElement("div");
+      rayo.style.cssText = `
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9;
+        animation: kiRayoGiro ${dur}s linear infinite;
+        animation-direction: ${dir};
+        transform-origin: 0 0;
+      `;
+      const linea = document.createElement("div");
+      linea.style.cssText = `
+        position: absolute;
+        width: 2px;
+        height: 25px;
+        background: linear-gradient(to bottom, rgba(100,200,255,1), transparent);
+        border-radius: 2px;
+        top: -${cy + 25}px;
+        left: -1px;
+        filter: blur(1px);
+      `;
+      rayo.appendChild(linea);
+      card.appendChild(rayo);
+    });
+  });
+}
 /* ────────────────────────────────────────────────
    PALABRAS MALSONANTES — editá a gusto
    ──────────────────────────────────────────────── */
@@ -1104,6 +1233,7 @@ function renderGrilla() {
     iniciarEfectoRipple();
     iniciarEfectoChispas();
     iniciarEfectoCustom();
+    iniciarEfectoKi();
   }, 100);
   
 }
