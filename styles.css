@@ -294,6 +294,10 @@ h1 em { color: var(--rosa-oscuro); font-style: italic; transition: color 0.5s; }
 .tab.tab-gamer:hover,
 .tab.tab-gamer.activo      { background: var(--gamer-purple); color: #fff; }
 #tab-gamer                 { display: none; }
+.tab.tab-sexy              { display: none; } /* se muestra solo con contraseña */
+.tab.tab-cotidiano         { border-color: #f0a500; color: #b87800; }
+.tab.tab-cotidiano:hover,
+.tab.tab-cotidiano.activo  { background: #f0a500; border-color: #f0a500; color: #fff; }
 
 
 /* ─── 9. CONTADOR ──────────────────────────────── */
@@ -384,6 +388,34 @@ h1 em { color: var(--rosa-oscuro); font-style: italic; transition: color 0.5s; }
   from { opacity: 0; transform: translateY(18px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* Entrada dramática al cambiar de modo */
+@keyframes modeEnter {
+  0%   { opacity: 0; transform: translateY(24px) scale(0.93); filter: brightness(2); }
+  40%  { filter: brightness(1.4); }
+  100% { opacity: 1; transform: translateY(0)   scale(1);    filter: brightness(1); }
+}
+.vale.mode-transition {
+  animation: modeEnter 0.55s cubic-bezier(.175,.885,.32,1.275) forwards !important;
+}
+
+/* Flash de pantalla al activar un modo */
+.mode-flash {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 500;
+  opacity: 0;
+  animation: modeFlash 0.6s ease forwards;
+}
+.mode-flash.gamer { background: radial-gradient(ellipse at center, rgba(0,255,204,0.35), transparent 70%); }
+.mode-flash.sexy  { background: radial-gradient(ellipse at center, rgba(255,45,107,0.35),  transparent 70%); }
+.mode-flash.off   { background: radial-gradient(ellipse at center, rgba(255,255,255,0.2),   transparent 70%); }
+@keyframes modeFlash {
+  0%   { opacity: 0;   transform: scale(0.8); }
+  30%  { opacity: 1;   transform: scale(1.05); }
+  100% { opacity: 0;   transform: scale(1.3); }
+}
 .vale:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 36px rgba(61,43,43,0.13);
@@ -464,6 +496,32 @@ h1 em { color: var(--rosa-oscuro); font-style: italic; transition: color 0.5s; }
   transition: background 0.5s;
 }
 .vale.sexy .vale-pie { background: linear-gradient(135deg, #e74c3c 0%, var(--rojo-oscuro) 100%); }
+
+/* ── Cupones cotidianos — paleta azul ── */
+:root {
+  --cot-azul:       #4a90d9;
+  --cot-azul-osc:   #2c6fad;
+  --cot-azul-suave: #e8f2fc;
+  --cot-cielo:      #7ab8f5;
+}
+.vale.cotidiano {
+  background: #fff;
+  border: 1px solid rgba(74,144,217,0.25);
+}
+.vale.cotidiano::before  { border-color: var(--cot-azul); opacity: 0.35; }
+.vale.cotidiano::after   {
+  background:
+    radial-gradient(circle at 0%   50%, var(--crema) 8px, transparent 8px),
+    radial-gradient(circle at 100% 50%, var(--crema) 8px, transparent 8px);
+}
+.vale.cotidiano:hover    { box-shadow: 0 10px 36px rgba(74,144,217,0.18); }
+.vale.cotidiano .vale-titulo     { color: var(--cot-azul-osc); }
+.vale.cotidiano .vale-descripcion { color: #5a7fa0; }
+.vale.cotidiano .vale-pie        { background: linear-gradient(135deg, var(--cot-azul) 0%, var(--cot-azul-osc) 100%); }
+.vale.cotidiano .vale-emoji      { filter: drop-shadow(0 2px 6px rgba(74,144,217,0.35)); }
+.vale.cotidiano .btn-canjear     { border-color: var(--cot-azul); color: var(--cot-azul-osc); }
+.vale.cotidiano .btn-canjear:hover { background: var(--cot-azul); color: #fff; border-color: var(--cot-azul); }
+.vale.cotidiano .sello           { border-color: var(--cot-azul-osc); color: var(--cot-azul-osc); }
 .vale-label {
   font-size: 0.65rem;
   letter-spacing: 0.18em;
@@ -542,6 +600,11 @@ h1 em { color: var(--rosa-oscuro); font-style: italic; transition: color 0.5s; }
 }
 
 
+.badge-sexy {
+  background: linear-gradient(135deg, #ff2d6b, #c2185b);
+  box-shadow: 0 0 10px rgba(255, 45, 107, 0.6);
+  color: #fff;
+}
 /* ─── 13. EFECTOS ESPECIALES DE CUPONES ────────── */
 /* efecto-brillo: parpadeo del borde */
 .vale.efecto-brillo::before {
@@ -595,6 +658,114 @@ h1 em { color: var(--rosa-oscuro); font-style: italic; transition: color 0.5s; }
 @keyframes shine {
   0%, 70%, 100% { left: -60%; opacity: 0; }
   40%           { left: 130%; opacity: 1; }
+}
+
+/* efecto-float: levitación suave continua */
+.vale.efecto-float {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.vale.efecto-float:hover {
+  transform: translateY(-8px) rotate(1deg) !important;
+  box-shadow: 0 16px 40px rgba(61,43,43,0.18) !important;
+}
+@keyframes float {
+  0%, 100% { transform: rotate(-1deg) translateY(0px); }
+  50%       { transform: rotate(1deg) translateY(-5px); }
+}
+
+
+/* efecto-corazones: corazoncitos flotando alrededor del cupón al hacer hover */
+.vale.efecto-corazones::after {
+  display: none; /* reseteamos el ::after del ticket */
+}
+.vale.efecto-corazones {
+  overflow: visible !important;
+}
+.vale.efecto-corazones .vale-cuerpo::before {
+  content: '♥ ♡ ♥ ♡ ♥';
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  color: var(--rosa);
+  letter-spacing: 0.4rem;
+  opacity: 0;
+  transition: opacity 0.4s, top 0.4s;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.vale.efecto-corazones:hover .vale-cuerpo::before {
+  opacity: 1;
+  top: -22px;
+}
+
+/* keyframe para efecto-corazones JS */
+@keyframes corazonFlotante {
+  0%   { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+  100% { opacity: 0; transform: translateY(-45px) scale(1.3) rotate(15deg); }
+}
+.vale.efecto-corazones { overflow: visible !important; }
+
+
+
+
+/* efecto-berenjenas: berenjenas flotando al hover */
+@keyframes berenjena {
+  0%   { opacity: 1; transform: translateY(0) scale(1) rotate(-10deg); }
+  100% { opacity: 0; transform: translateY(-55px) scale(1.4) rotate(20deg); }
+}
+.vale.efecto-berenjenas { overflow: visible !important; }
+
+/* efecto-pixels: cuadraditos pixelados flotando */
+@keyframes pixelFlotante {
+  0%   { opacity: 1; transform: translateY(0) scale(1); }
+  50%  { opacity: 0.8; transform: translateY(-20px) scale(0.8); }
+  100% { opacity: 0; transform: translateY(-50px) scale(0.3); }
+}
+.vale.efecto-pixels { overflow: visible !important; }
+
+
+
+
+/* efecto-tilt: inclinación 3D al hover */
+.vale.efecto-tilt {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.vale.efecto-tilt:hover {
+  transform: perspective(600px) rotateY(-6deg) rotateX(3deg) scale(1.03);
+  box-shadow: 6px 12px 36px rgba(61,43,43,0.18);
+}
+
+/* efecto-neon-rose: borde neón rosa pulsante */
+.vale.efecto-neon-rose {
+  border: 1px solid var(--rosa-oscuro);
+  box-shadow: 0 0 8px rgba(194,110,138,0.4), inset 0 0 8px rgba(194,110,138,0.05);
+  animation: fadeUp 0.45s ease forwards, neonRose 2.5s ease-in-out infinite 0.5s;
+}
+.vale.efecto-neon-rose:hover {
+  box-shadow: 0 0 22px rgba(194,110,138,0.7), 0 0 45px rgba(194,110,138,0.25), inset 0 0 14px rgba(194,110,138,0.08);
+}
+@keyframes neonRose {
+  0%, 100% { box-shadow: 0 0 8px  rgba(194,110,138,0.35), inset 0 0 8px  rgba(194,110,138,0.04); }
+  50%       { box-shadow: 0 0 22px rgba(194,110,138,0.65), inset 0 0 14px rgba(194,110,138,0.08); }
+}
+
+/* efecto-aura-rose: halo difuso alrededor del cupón */
+.vale.efecto-aura-rose::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 20px;
+  background: radial-gradient(ellipse at center, rgba(232,160,180,0.22) 0%, transparent 70%);
+  pointer-events: none;
+  animation: auraRose 3s ease-in-out infinite;
+  z-index: 0;
+}
+@keyframes auraRose {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%       { opacity: 0.9; transform: scale(1.04); }
 }
 
 
@@ -996,6 +1167,23 @@ body.gamer-mode .btn-chat-toggle { background: var(--gamer-purple); }
 }
 
 
+
+
+
+
+
+
+
+.efecto-star {
+  box-shadow: 0 0 20px gold;
+  animation: star 1.5s infinite alternate;
+}
+
+@keyframes star {
+  from { transform: scale(1); }
+  to { transform: scale(1.03); }
+}
+
 /* ─── 21. GAMER BANNER ─────────────────────────── */
 .gamer-banner {
   display: none;
@@ -1016,4 +1204,126 @@ body.gamer-mode .gamer-banner { display: block; }
   from { transform: translateY(-100%); }
   to   { transform: translateY(0); }
   
+
+
+  
+}
+
+/* ─── 22. MODO SEXY ─────────────────────────────── */
+:root {
+  --sexy-bg:    #0d0005;
+  --sexy-accent:#ff2d6b;
+  --sexy-rose:  #ff80aa;
+  --sexy-deep:  #8b0030;
+  --sexy-gold:  #ffb347;
+}
+
+body.sexy-mode { background-color: var(--sexy-bg); color: var(--sexy-rose); }
+body.sexy-mode::before {
+  content:''; position:fixed; inset:0;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(255,45,107,0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 80%, rgba(139,0,48,0.25)   0%, transparent 55%),
+    radial-gradient(ellipse at 50% 10%, rgba(255,128,170,0.08) 0%, transparent 40%);
+  pointer-events:none; z-index:0;
+}
+body.sexy-mode .contenedor::before {
+  content:''; position:fixed; inset:0;
+  background:
+    repeating-linear-gradient(0deg,  transparent,transparent 40px,rgba(255,45,107,0.03) 40px,rgba(255,45,107,0.03) 41px),
+    repeating-linear-gradient(90deg, transparent,transparent 40px,rgba(255,45,107,0.02) 40px,rgba(255,45,107,0.02) 41px);
+  pointer-events:none; z-index:0;
+  animation: sexyGridShift 8s linear infinite;
+}
+@keyframes sexyGridShift { from{background-position:0 0} to{background-position:41px 41px} }
+body.sexy-mode .contenedor { padding-top: 4rem; }
+
+body.sexy-mode h1 {
+  color: var(--sexy-rose);
+  font-style: italic;
+  animation: sexyTitlePulse 3s ease-in-out infinite;
+}
+@keyframes sexyTitlePulse {
+  0%,100% { text-shadow: 0 0 20px rgba(255,45,107,0.5); }
+  50%     { text-shadow: 0 0 50px rgba(255,45,107,0.9), 0 0 90px rgba(255,45,107,0.3); }
+}
+body.sexy-mode h1 em { color: var(--sexy-gold); }
+body.sexy-mode .subtitulo-header { color: var(--sexy-accent); letter-spacing:0.4em; }
+body.sexy-mode .linea-dec::before { background: linear-gradient(to right, transparent, var(--sexy-accent)); }
+body.sexy-mode .linea-dec::after  { background: linear-gradient(to left,  transparent, var(--sexy-accent)); }
+body.sexy-mode .frase-aleatoria   { color: rgba(255,128,170,0.8); }
+
+body.sexy-mode .tab { border-color:var(--sexy-accent); color:var(--sexy-rose); background:transparent; }
+body.sexy-mode .tab:hover,
+body.sexy-mode .tab.activo { background:var(--sexy-accent); color:#fff; border-color:var(--sexy-accent); }
+body.sexy-mode .tab.tab-sexy { border-color:var(--sexy-gold); color:var(--sexy-gold); display:inline-block; }
+body.sexy-mode .tab.tab-sexy.activo { background:var(--sexy-gold); color:#000; }
+
+body.sexy-mode .vale {
+  background: linear-gradient(160deg, #1a0010 0%, #2a0018 100%);
+  border: 1px solid rgba(255,45,107,0.35);
+  box-shadow: 0 0 20px rgba(255,45,107,0.15);
+}
+body.sexy-mode .vale::before { border-color: rgba(255,45,107,0.4); }
+body.sexy-mode .vale::after {
+  background:
+    radial-gradient(circle at 0%   50%, var(--sexy-bg) 8px, transparent 8px),
+    radial-gradient(circle at 100% 50%, var(--sexy-bg) 8px, transparent 8px);
+}
+body.sexy-mode .vale:hover {
+  box-shadow: 0 0 40px rgba(255,45,107,0.45), 0 8px 30px rgba(139,0,48,0.3);
+  transform: translateY(-6px) scale(1.02);
+}
+body.sexy-mode .vale-titulo     { color:var(--sexy-rose); font-style:italic; }
+body.sexy-mode .vale-descripcion { color:rgba(255,128,170,0.65); }
+body.sexy-mode .vale-pie        { background: linear-gradient(135deg, var(--sexy-deep), var(--sexy-accent)); }
+body.sexy-mode .btn-canjear     { border-color:var(--sexy-accent); color:var(--sexy-rose); }
+body.sexy-mode .btn-canjear:hover { background:var(--sexy-accent); color:#fff; }
+body.sexy-mode .sello           { border-color:var(--sexy-accent); color:var(--sexy-accent); background:rgba(0,0,0,0.5); }
+body.sexy-mode .vale-emoji      { filter: drop-shadow(0 0 10px rgba(255,45,107,0.8)); }
+
+body.sexy-mode .temporizador-widget {
+  border-color:var(--sexy-accent); background:rgba(26,0,10,0.8);
+  box-shadow: 0 0 20px rgba(255,45,107,0.2);
+}
+body.sexy-mode .temp-titulo    { color:var(--sexy-gold); }
+body.sexy-mode .temp-countdown { color:var(--sexy-rose); text-shadow:0 0 10px rgba(255,45,107,0.5); }
+body.sexy-mode .temp-subtexto  { color:rgba(255,128,170,0.6); }
+body.sexy-mode .temp-barra-wrap { background:rgba(255,45,107,0.15); }
+body.sexy-mode .temp-barra     { background: linear-gradient(90deg, var(--sexy-deep), var(--sexy-accent), var(--sexy-gold)); }
+
+body.sexy-mode .contador       { color:rgba(255,128,170,0.5); }
+body.sexy-mode .contador span  { color:var(--sexy-accent); }
+body.sexy-mode .campo-secreto  { background:rgba(255,45,107,0.05); border-color:var(--sexy-accent); color:var(--sexy-rose); }
+body.sexy-mode .btn-musica     { background:linear-gradient(135deg,var(--sexy-deep),var(--sexy-accent)); box-shadow:0 0 20px rgba(255,45,107,0.5); }
+body.sexy-mode .toast          { background:var(--sexy-accent); color:#fff; }
+body.sexy-mode .mini-chat      { background:#12000a; border-color:var(--sexy-accent); }
+body.sexy-mode .mini-chat .chat-titulo { background:linear-gradient(135deg,var(--sexy-deep),var(--sexy-accent)); }
+body.sexy-mode .chat-burbuja.Fresh { background:var(--sexy-accent); }
+body.sexy-mode .chat-burbuja.Kin   { background:#200010; border:1px solid var(--sexy-rose); color:var(--sexy-rose); }
+body.sexy-mode .btn-chat-toggle    { background:linear-gradient(135deg,var(--sexy-deep),var(--sexy-accent)); }
+body.sexy-mode .modal          { background:#1a000a; border:1px solid var(--sexy-accent); }
+body.sexy-mode .modal-titulo   { color:var(--sexy-rose); }
+body.sexy-mode .modal-subtitulo { color:rgba(255,128,170,0.7); }
+body.sexy-mode .fondo-frase    { color:rgba(255,45,107,0.08); }
+
+.sexy-banner {
+  display:none; position:fixed; top:0; left:0; right:0;
+  background: linear-gradient(90deg, var(--sexy-deep), var(--sexy-accent), var(--sexy-gold), var(--sexy-accent), var(--sexy-deep));
+  background-size:200% 100%;
+  color:#fff; font-family:'Playfair Display',serif; font-style:italic;
+  font-size:0.85rem; text-align:center; padding:0.45rem;
+  z-index:200; letter-spacing:0.15em;
+  animation: sexyBannerSlide 0.5s ease, sexyBannerShimmer 4s linear infinite;
+}
+body.sexy-mode .sexy-banner { display:block; }
+@keyframes sexyBannerSlide  { from{transform:translateY(-100%)} to{transform:translateY(0)} }
+@keyframes sexyBannerShimmer { 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
+
+/* forzar overflow visible para efectos JS en todos los modos */
+/* fix muescas en cupones con efectos JS */
+body.sexy-mode .vale.efecto-berenjenas::after,
+body.gamer-mode .vale.efecto-pixels::after,
+body.gamer-mode .vale.efecto-berenjenas::after {
+  display: none;
 }
