@@ -272,6 +272,13 @@ te pienso y se me acomoda el mundo, a la inversa tambien jjeje.`,
     texto: `Eres mi soda pop
 
 `,
+
+  },
+  buu: {
+    titulo: "Absorción emocional en progreso",
+    texto: `Si Majin Buu puede volverse bueno por cariño… imaginate lo que hacés vos conmigo 💖.
+
+`,
   },
 };
 
@@ -287,6 +294,7 @@ const CONTRASENAS_SECRETAS = {
   "kin":                            "Kin",
   "negros":                         "Negros",
   "jinu":                           "jinu",
+  "buu":                            "buu-modal",
   "modo gamer":                     "gamer",        // especial: activa modo gamer
   "reset cupones":                  "reset",        // especial: resetea todos los canjeados
   "tota":                           "sexy-toggle",  // especial: muestra/oculta cupones sexy
@@ -1536,9 +1544,17 @@ campoSecreto.addEventListener("keydown", e => {
       renderGrilla();
       mostrarToast("✨ Todos los cupones reseteados!");
     }
-  } else if (accion) {
-    mostrarModalSecreto(accion);
-  } else {
+  } else if (accion === "buu-modal") {
+  const info = MENSAJES_SECRETOS["buu"];
+  document.querySelector(".buu-titulo").textContent = info.titulo;
+  document.querySelector(".buu-texto").textContent  = info.texto;
+  document.getElementById("overlay-buu").classList.add("visible");
+  lanzarConfetti(false);
+}
+  else if (accion) {
+  mostrarModalSecreto(accion);
+}
+  else {
     const pista = buscarPistaTroll(val);
     mostrarToast(pista);
   }
@@ -1567,6 +1583,15 @@ document.getElementById("btn-cerrar-secreto").addEventListener("click", () => {
 document.getElementById("overlay-secreto").addEventListener("click", e => {
   if (e.target === document.getElementById("overlay-secreto"))
     document.getElementById("overlay-secreto").classList.remove("visible");
+});
+
+
+document.getElementById("buu-cerrar").addEventListener("click", () => {
+  document.getElementById("overlay-buu").classList.remove("visible");
+});
+document.getElementById("overlay-buu").addEventListener("click", e => {
+  if (e.target === document.getElementById("overlay-buu"))
+    document.getElementById("overlay-buu").classList.remove("visible");
 });
 
 function lanzarParticulasSecretas() {

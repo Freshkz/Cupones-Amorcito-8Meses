@@ -1858,3 +1858,116 @@ body.gamer-mode .bienvenida-btn     { background: linear-gradient(135deg, var(--
 body.gamer-mode .grilla {
   contain: layout;
 }
+
+
+
+
+/* ─── MODAL BUU ─────────────────────────────── */
+.overlay-buu {
+  position: fixed;
+  inset: 0;
+  background: rgba(10,0,20,0.92);
+  z-index: 300;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  backdrop-filter: blur(8px);
+}
+.overlay-buu.visible { opacity: 1; pointer-events: all; }
+
+article.buu-card {
+  position: relative;
+  width: 340px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+article.buu-card .buu-fondo {
+  box-shadow: 0 60px 60px -30px rgba(255, 100, 200, 0.5);
+  border-radius: 16px;
+  object-fit: cover;
+  object-position: center top;
+  width: 100%;
+  height: 420px;
+}
+article.buu-card .buu-personaje {
+  position: absolute;
+  width: 200px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transform: translateY(25%);
+  transition: 0.3s ease;
+  opacity: 0;
+}
+article.buu-card:hover {
+  transform: perspective(250px) rotateX(10deg) translateY(-5%) translateZ(0);
+}
+article.buu-card::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 16px;
+  background-image: linear-gradient(
+    to bottom,
+    transparent 10%,
+    rgba(180, 0, 100, 0.6) 50%,
+    rgba(100, 0, 60, 0.95) 95%
+  );
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+article.buu-card:hover::before { opacity: 1; }
+article.buu-card:hover .buu-personaje {
+  opacity: 1;
+  transform: translateY(10%);
+}
+.buu-mensaje {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0; right: 0;
+  text-align: center;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  padding: 0.5rem 1rem;
+  background: rgba(100,0,60,0.7);
+  border-radius: 0 0 16px 16px;
+}
+article.buu-card:hover .buu-mensaje { opacity: 1; }
+.buu-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: #ffb3d9;
+  margin-bottom: 0.4rem;
+  text-shadow: 0 0 10px rgba(255,100,200,0.8);
+}
+.buu-texto {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #fff;
+  line-height: 1.5;
+}
+.buu-cerrar {
+  background: none;
+  border: 1.5px solid rgba(255,100,200,0.5);
+  color: rgba(255,150,220,0.8);
+  border-radius: 30px;
+  padding: 0.6rem 1.8rem;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.buu-cerrar:hover {
+  background: rgba(255,100,200,0.15);
+  color: #fff;
+}
