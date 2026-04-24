@@ -44,7 +44,7 @@ const CONFIG_EMAIL = {
    Cambiá el día aquí (actualmente: día 22 de cada mes)
    ──────────────────────────────────────────────── */
 const CONFIG_TEMPORIZADOR = {
-  DIA_REINICIO: 29,
+  DIA_REINICIO: 24,
 };
 
 /* ────────────────────────────────────────────────
@@ -758,6 +758,7 @@ function renderGrilla() {
         ${v.descripcion ? `<div class="vale-descripcion">${v.descripcion}</div>` : ""}
       </div>
       <div class="sello">Canjeado ♥</div>
+      <div class="vale-tachado"></div>
       <div class="vale-pie">
         <span class="vale-label">${labelPie}</span>
         <span class="vale-numero">${String(idx + 1).padStart(2, "0")}</span>
