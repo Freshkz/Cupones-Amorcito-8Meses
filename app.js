@@ -44,8 +44,32 @@ const CONFIG_EMAIL = {
    Cambiá el día aquí (actualmente: día 22 de cada mes)
    ──────────────────────────────────────────────── */
 const CONFIG_TEMPORIZADOR = {
-  DIA_REINICIO: 24,
+  DIA_REINICIO: 29,
 };
+
+
+
+/* ────────────────────────────────────────────────
+    EFECTO CUSTOM — imágenes/emojis flotantes
+    Agregá acá lo que querés que flote en cada cupón
+    ──────────────────────────────────────────────── */
+  const EFECTOS_CUSTOM = {
+    "Cupón para DropLegendario": {
+      items: ["img/esfera.png", "img/logo.png", "img/icon_skill1.png", "img/icon_transformation1.png", "💎"],
+      cantidad: 6,
+      tamaño: "1.4rem",
+    },
+    // Para agregar otro cupón:
+    // "Título exacto del cupón": {
+    //   items: ["img/tuimagen.png", "🔥", "✨"],
+    //   cantidad: 5,
+    //   tamaño: "1.2rem",
+    // },
+  };
+
+
+
+
 
 /* ────────────────────────────────────────────────
    FRASES ALEATORIAS (header, modo normal)
@@ -113,61 +137,61 @@ const CUPONES_ROMANTICOS = [
     emoji: "🎬",
     titulo: "Cupón para ver una película",
     descripcion: "Elijo yo la película, preparás el pochoclo. Sin quejas.",
-    efecto: ["efecto-brillo", "efecto-glow", "efecto-shine", "efecto-aura-rose"],
+    efecto: ["efecto-brillo", "efecto-glow", "efecto-aura-rose"],
   },
-  { emoji: "🍕", titulo: "Cupón para pedir comida",        descripcion: "Una noche sin cocinar. Pedimos lo que quieras.",                  efecto: "efecto-sparkle" },
-  { emoji: "💆", titulo: "Cupón para un masaje",           descripcion: "30 minutos de masaje de espalda. Sin límite de tiempo.",          efecto: "efecto-glow"    },
-  { emoji: "🛌", titulo: "Cupón para dormir hasta tarde",  descripcion: "Un fin de semana sin que nadie te despierte.",                   efecto: "efecto-brillo"  },
-  { emoji: "🌅", titulo: "Cupón para una escapada",        descripcion: "A donde quieras ir juntos. Sin peros.",                          efecto: "efecto-shine"   },
-  { emoji: "🎶", titulo: "Cupón para bailar en casa",      descripcion: "Tu playlist, yo te sigo. Sin importar la hora.",                 efecto: "efecto-sparkle" },
-  { emoji: "🍳", titulo: "Cupón para desayuno en cama",    descripcion: "Me levanto primero y te lo llevo. Prometido.",                   efecto: "efecto-brillo"  },
-  { emoji: "💌", titulo: "Cupón para una carta de amor",   descripcion: "A mano, lo que siento, cuando lo pidas.",                        efecto: ""               },
-  { emoji: "✨", titulo: "Cupón comodín",                  descripcion: "Para lo que se te ocurra. Vale para cualquier cosa.",             efecto: "efecto-sparkle" },
-  { emoji: "🍔", titulo: "Cupón para BIG PONS",            descripcion: "Este cupón invoca a Big Pons 🍔, Yo pago (😠)",             efecto: "efecto-shine"},
-  { emoji: "🏃", titulo: "Cupón para Ir a verte",          descripcion: "Este cupón activa modo: no aguanto más y voy a verte",             efecto: "efecto-glow"},
-  { emoji: "📸", titulo: "Cupón para Sesión de fotos obligatoria", descripcion: "Este cupón te obliga a sacarte fotos conmigo. no importa si decis que salis mal, si no queres  y si te haces el dificil",             efecto: "efecto-glow"},
-  { emoji: "😡", titulo: "Cupón para Pelear",                  descripcion: "Este cupón activa una pelea falsa, puede ser por cualquier cosa! (WARNING:Reírnos y olvidarnos en 2 minutos 💘) ",             efecto: "efecto-shine"},
-  { emoji: "😤", titulo: "Cupón ¿Quién es esa?",                  descripcion: "Este cupón me permite hacerme el celoso ",             efecto: "efecto-shine"},
-  { emoji: "👂", titulo: "Cupón para mandarte un audio largo",   descripcion: "Te mando un audio de lo que pienso cuando no te lo digo. Sin resumir.",       efecto: "efecto-sparkle"   },
+  { emoji: "🛌", titulo: "Cupón para dormir hasta tarde",  descripcion: "Un fin de semana sin que nadie te despierte.",                   efecto: ["efecto-corazones", "efecto-sparkle"] },
+  { emoji: "🌅", titulo: "Cupón para una escapada",        descripcion: "A donde quieras ir juntos. Sin peros.",                          efecto: [ "efecto-aura-corazones", "efecto-sparkle"] },
+  { emoji: "🎶", titulo: "Cupón para bailar en casa",      descripcion: "Tu playlist, yo te sigo. Sin importar la hora.",                 efecto: ["efecto-corazones", "efecto-sparkle"] },
+  { emoji: "🍳", titulo: "Cupón para desayuno en cama",    descripcion: "Me levanto primero y te lo llevo. Prometido.",                   efecto: ["efecto-corazones", "efecto-brillo"] },
+  { emoji: "💌", titulo: "Cupón para una carta de amor",   descripcion: "A mano, lo que siento, cuando lo pidas.",                        efecto: ["efecto-corazones", "efecto-sparkle"] },
+  { emoji: "✨", titulo: "Cupón comodín",                  descripcion: "Para lo que se te ocurra. Vale para cualquier cosa.",             efecto: ["efecto-sparkle", "efecto-golden"] },
+  { emoji: "🏃", titulo: "Cupón para Ir a verte",          descripcion: "Este cupón activa modo: no aguanto más y voy a verte",             efecto: ["efecto-corazones", "efecto-glow"] },
+  { emoji: "📸", titulo: "Cupón para Sesión de fotos obligatoria", descripcion: "Este cupón te obliga a sacarte fotos conmigo. no importa si decis que salis mal, si no queres  y si te haces el dificil",             efecto: ["efecto-corazones", "efecto-sparkle"] },
+  { emoji: "👂", titulo: "Cupón para mandarte un audio largo",   descripcion: "Te mando un audio de lo que pienso cuando no te lo digo. Sin resumir.", efecto: ["efecto-aura-corazones", "efecto-sparkle"] },
 
 ];
 
 const CUPONES_SEXY = [
-  { emoji: "🔥", titulo: "Cupón para una noche sin apuro",       descripcion: "Sin celular, sin hora. Solo nosotros dos.",                      efecto: ""              },
-  { emoji: "🛁", titulo: "Cupón para un baño juntos",            descripcion: "Velas, espuma, y lo que venga después.",                          efecto: ""              },
-  { emoji: "💋", titulo: "Cupón para que te bese donde quieras", descripcion: "Sin restricciones. El control lo tenés vos.",                      efecto: "efecto-brillo" },
-  { emoji: "🙈", titulo: "Cupón para una fantasía tuya",         descripcion: "Me decís, yo cumplo. Sin preguntas.",                               efecto: ""              },
-  { emoji: "😊", titulo: "Cupón para TOTA",            descripcion: "Lo que imagines, lo hacemos realidad.",                             efecto: "efecto-shine"              },
-  { emoji: "🌙", titulo: "Cupón para una noche de hotel",        descripcion: "Solo para nosotros dos. Nada de interrupciones.",                   efecto: "efecto-berenjenas"              },
-  { emoji: "👀", titulo: "Cupón para un striptease",             descripcion: "Lo que pedís, te lo doy. Sin prisa.",                               efecto: "efecto-berenjenas"              },
-  { emoji: "🍓", titulo: "Cupón para una noche de exploración",  descripcion: "Vos mandás. Yo acepto todo lo que propongás.",                      efecto: "efecto-berenjenas"              },
+  { emoji: "🔥", titulo: "Cupón para una noche sin apuro",       descripcion: "Sin celular, sin hora. Solo nosotros dos.",                      efecto: ["efecto-neon-rose", "efecto-berenjenas", "efecto-tilt"] },
+  { emoji: "🛁", titulo: "Cupón para un baño juntos",            descripcion: "Velas, espuma, y lo que venga después.",                          efecto:["efecto-glow", "efecto-aura-rose", "efecto-tilt"] },
+  { emoji: "💋", titulo: "Cupón para que te bese donde quieras", descripcion: "Sin restricciones. El control lo tenés vos.",                      efecto: ["efecto-brillo", "efecto-berenjenas", "efecto-tilt"] },
+  { emoji: "🙈", titulo: "Cupón para una fantasía tuya",         descripcion: "Me decís, yo cumplo. Sin preguntas.",                               efecto:["efecto-aura-rose", "efecto-berenjenas", "efecto-tilt"] },
+  { emoji: "😊", titulo: "Cupón para TOTA",            descripcion: "Lo que imagines, lo hacemos realidad.",                             efecto: ["efecto-glow", "efecto-berenjenas", "efecto-aura-rose", "efecto-tilt"] },
+  { emoji: "🌙", titulo: "Cupón para una noche de hotel",        descripcion: "Solo para nosotros dos. Nada de interrupciones.",                   efecto: ["efecto-glow", "efecto-berenjenas", "efecto-aura-rose", "efecto-tilt"] },
+  { emoji: "👀", titulo: "Cupón para un striptease",             descripcion: "Lo que pedís, te lo doy. Sin prisa.",                               efecto: ["efecto-aura-rose", "efecto-berenjenas", "efecto-tilt"] },
+  { emoji: "🍓", titulo: "Cupón para una noche de exploración",  descripcion: "Vos mandás. Yo acepto todo lo que propongás.",                      efecto: [ "efecto-berenjenas", "efecto-tilt"] },
+  { emoji: "❤️‍🔥", titulo: "Cupón para lamerte",  descripcion: "Te puedo lamer donde quieras, este cupon  tambien puede ser usado a la inversa",                      efecto: [ "efecto-berenjenas", "efecto-tilt", "efecto-aura-rose"] },
 ];
 
 
 const CUPONES_GAMER = [
-  { emoji: "🎮", titulo: "Cupón para una noche de Dragon Ball Online", descripcion: "A las 8 nos levantamos a jugar. Seré tu healer(no), tu support(no), lo que necesites.",              efecto: "efecto-brillo"  },
-  { emoji: "🏆", titulo: "Cupón para elegir el juego",                 descripcion: "Tu elección, sin discusión. Esa noche mandás vos.",                                            efecto: "efecto-sparkle" },
-  { emoji: "🕹️", titulo: "Cupón para modo co-op",                      descripcion: "Un juego para dos. Somos el mejor equipo del mundo.",                                          efecto: "efecto-berenjenas"               },
-  { emoji: "⚔️", titulo: "Cupón para raid especial",                   descripcion: "Nos quedamos despiertos hasta ganarlo. Sin rendirnos.",                                        efecto: "efecto-brillo"  },
-  { emoji: "🌟", titulo: "Cupón para stream juntos",                   descripcion: "Ponemos la cámara y jugamos como si fuéramos streamers famosos.",                              efecto: "efecto-sparkle" },
-  { emoji: "🎯", titulo: "Cupón para 1v1",                             descripcion: "Te dejo ganar... o capaz no. Spoiler: te voy a dejar ganar.",                                  efecto: "efecto-berenjenas"               },
-  { emoji: "👻", titulo: "Cupón para Phasmophobia",                    descripcion: "Volvemos a donde empezó todo 👻 pero esta vez te agarro más fuerte… porque ya sé que no te quiero soltar 😳", efecto: "efecto-pixels" },
+  { emoji: "🎮", titulo: "Cupón para una noche de Dragon Ball Online", descripcion: "A las 8 nos levantamos a jugar. Seré tu healer(no), tu support(no), lo que necesites.",              efecto: ["efecto-pixels", "efecto-brillo", "efecto-magnetico"] },
+  { emoji: "🏆", titulo: "Cupón para elegir el juego",                 descripcion: "Tu elección, sin discusión. Esa noche mandás vos.",                                            efecto: ["efecto-sparkle", "efecto-neon-rose", "efecto-magnetico"] },
+  { emoji: "🕹️", titulo: "Cupón para modo co-op",                      descripcion: "Un juego para dos. Somos el mejor equipo del mundo.",                                          efecto: ["efecto-pixels", "efecto-tilt", "efecto-magnetico"] },
+  { emoji: "⚔️", titulo: "Cupón para raid especial",                   descripcion: "Nos quedamos despiertos hasta ganarlo. Sin rendirnos.",                                        efecto: ["efecto-pixels", "efecto-glow", "efecto-magnetico"] },
+  { emoji: "🌟", titulo: "Cupón para stream juntos",                   descripcion: "Ponemos la cámara y jugamos como si fuéramos streamers famosos.",                              efecto: ["efecto-pixels", "efecto-sparkle" , "efecto-magnetico"] },
+  { emoji: "🎯", titulo: "Cupón para 1v1",                             descripcion: "Te dejo ganar... o capaz no. Spoiler: te voy a dejar ganar.",                                  efecto: ["efecto-pixels", "efecto-tilt", "efecto-brillo"] },
+  { emoji: "👻", titulo: "Cupón para Phasmophobia",                    descripcion: "Volvemos a donde empezó todo 👻 pero esta vez te agarro más fuerte… porque ya sé que no te quiero soltar 😳", efecto: ["efecto-pixels", "efecto-magnetico", "efecto-brillo"] },
+  { emoji: "🎥", titulo: "Cupón para Stremearte",                      descripcion: "Activa este cupón y te voy a stremear cualquier cosa que me pidas. Me convierto en el mejor jugador del mundo… o al menos hago que parezca 😎 (incluye dedicarte cada kill… si es que hay alguna)..", efecto: ["efecto-pixels", "efecto-magnetico", "efecto-brillo"] },
+  { emoji: "img/gems.png", emojiBackup: "💎",titulo: "Cupón para DropLegendario",        descripcion: "Este cupón otorga un boost de gemas en Gekshin Sqquadra para cumplir tus deseos mas cursed o mas blessed ✨.(la cantidad depende del bolsillo del susodicho 🥹)",efecto: ["efecto-pixels", "efecto-tilt", "efecto-brillo"] },
 ];
-
 /* ────────────────────────────────────────────────
    CUPONES COTIDIANOS
    ──────────────────────────────────────────────── */
 const CUPONES_COTIDIANOS = [
-  { emoji: "🛒", titulo: "Cupón para ir al super juntos",        descripcion: "Con carrito, discusión de marca incluida y algo que no necesitamos igual.",    efecto: "efecto-sparkle"   },
-  { emoji: "📺", titulo: "Cupón para maratonear una serie",      descripcion: "Elegís vos. Me quejo en los primeros 10 minutos y después me engancho igual.", efecto: "efecto-shine"     },
-  { emoji: "🚗", titulo: "Cupón para viaje con música a full",   descripcion: "Ventanilla abajo, la tuya. Yo aguanto el frío sin quejarme. Casi.",            efecto: "efecto-pixels"      },
-  { emoji: "🧹", titulo: "Cupón para ordenar juntos",            descripcion: "Yo hago mi parte sin que me tengas que pedir dos veces. Prometo intentarlo.",  efecto: "efecto-brillo"    },
-  { emoji: "🍦", titulo: "Cupón para salir por helado",          descripcion: "Adónde quieras, cuándo quieras. Yo pago y no me como el tuyo (mucho).",       efecto: "efecto-neon-rose" },
-  { emoji: "📱", titulo: "Cupón para noche sin celular",         descripcion: "Los dos guardamos el teléfono. Solo nosotros dos, una hora entera.",           efecto: "efecto-aura-rose" },
-  { emoji: "🎲", titulo: "Cupón para juego de mesa",             descripcion: "Lo que quieras: Uno, Ajedrez, Monopoly. No hago trampa. Casi nunca.",             efecto: "efecto-corazones"      },
-  { emoji: "🌧️", titulo: "Cupón para día de lluvia juntos",      descripcion: "Sin planes, sin salir. Adentro, tapados, sin hacer nada y que sea perfecto.", efecto: "efecto-float"     },
+  { emoji: "🛒", titulo: "Cupón para ir al super juntos",        descripcion: "Con carrito, discusión de marca incluida y algo que no necesitamos igual.",    efecto: ["efecto-glow", "efecto-magnetico"] },
+  { emoji: "📺", titulo: "Cupón para maratonear una serie",      descripcion: "Elegís vos. Me quejo en los primeros 10 minutos y después me engancho igual.", efecto:  ["efecto-shine", "efecto-magnetico"] },
+  { emoji: "🧹", titulo: "Cupón para ordenar juntos",            descripcion: "Yo hago mi parte sin que me tengas que pedir dos veces. Prometo intentarlo.",  efecto:["efecto-brillo", "efecto-magnetico"] },
+  { emoji: "🍦", titulo: "Cupón para salir por helado",          descripcion: "Adónde quieras, cuándo quieras. Yo pago y no me como el tuyo (mucho).",       efecto: [ "efecto-corazones", "efecto-magnetico"] },
+  { emoji: "📱", titulo: "Cupón para noche sin celular",         descripcion: "Los dos guardamos el teléfono. Solo nosotros dos, una hora entera.",           efecto: ["efecto-aura-rose", "efecto-corazones", "efecto-magnetico"] },
+  { emoji: "🎲", titulo: "Cupón para juego de mesa",             descripcion: "Lo que quieras: Uno, Ajedrez, Monopoly. No hago trampa. Casi nunca.",             efecto: ["efecto-float", "efecto-sparkle"] },
+  { emoji: "🌧️", titulo: "Cupón para día de lluvia juntos",      descripcion: "Sin planes, sin salir. Adentro, tapados, sin hacer nada y que sea perfecto.", efecto: ["efecto-float", "efecto-corazones"] },
+  { emoji: "💆", titulo: "Cupón para un masaje",           descripcion: "30 minutos de masaje de espalda. Sin límite de tiempo.",          efecto: ["efecto-glow", "efecto-aura-rose", "efecto-magnetico"] },
+  { emoji: "🍔", titulo: "Cupón para BIG PONS",            descripcion: "Este cupón invoca a Big Pons 🍔, Yo pago (😠)",             efecto: ["efecto-shine", "efecto-sparkle", "efecto-magnetico"] },
+  { emoji: "🍕", titulo: "Cupón para pedir comida",        descripcion: "Una noche sin cocinar. Pedimos lo que quieras.",                  efecto: ["efecto-sparkle", "efecto-magnetico"] },
+  { emoji: "😤", titulo: "Cupón ¿Quién es esa?",                  descripcion: "Este cupón me permite hacerme el celoso ",             efecto: ["efecto-shine", "efecto-tilt", "efecto-chispas"] },
+  { emoji: "😡", titulo: "Cupón para Pelear",                  descripcion: "Este cupón activa una pelea falsa, puede ser por cualquier cosa! (WARNING:Reírnos y olvidarnos en 2 minutos 💘) ",efecto: ["efecto-shine", "efecto-tilt", "efecto-chispas"] },
 ];
-
 /* ────────────────────────────────────────────────
    MENSAJES SECRETOS
    Clave del objeto = tipo.  Para agregar uno nuevo:
@@ -367,6 +391,9 @@ let clicksCorazon  = 0;
 let timerCorazon   = null;
 
 let audioActual = null;
+
+
+
 
 
 /* ── Referencias DOM ── */
@@ -608,13 +635,301 @@ function iniciarEfectoPixels() {
   });
 }
 
+function iniciarEfectoGolden() {
+  document.querySelectorAll(".efecto-golden").forEach(card => {
+    if (card._goldenInit) return;
+    card._goldenInit = true;
+
+    // Destello diagonal dentro del cuerpo (respeta el clip)
+    const cuerpo = card.querySelector(".vale-cuerpo");
+    if (cuerpo) {
+      cuerpo.style.overflow = "hidden";
+      const shine = document.createElement("div");
+      shine.style.cssText = `
+        position: absolute;
+        top: -80%;
+        left: -80%;
+        width: 60%;
+        height: 250%;
+        background: linear-gradient(105deg, transparent 30%, rgba(255,220,100,0.15) 45%, rgba(255,240,150,0.6) 50%, rgba(255,220,100,0.15) 55%, transparent 70%);
+        transform: skewX(-15deg);
+        animation: goldenShine 3.5s ease-in-out infinite;
+        pointer-events: none;
+        z-index: 1;
+      `;
+      cuerpo.appendChild(shine);
+    }
 
 
+  
+
+
+
+
+    
+    // Partículas doradas — resto igual que tenías
+    const particulas = ["✨","⭐","💫","★","✦"];
+    for (let i = 0; i < 4; i++) {
+      const p = document.createElement("span");
+      p.textContent = particulas[Math.floor(Math.random() * particulas.length)];
+      p.style.cssText = `
+        position: absolute;
+        font-size: ${0.6 + Math.random() * 0.5}rem;
+        left: ${5 + Math.random() * 85}%;
+        top: ${10 + Math.random() * 65}%;
+        pointer-events: none;
+        z-index: 10;
+        color: #f0d080;
+        opacity: 0.7;
+        animation: goldenParticula ${2.5 + Math.random() * 2}s ease-in-out infinite ${Math.random() * 2}s;
+      `;
+      card.appendChild(p);
+    }
+
+    card.addEventListener("mouseenter", () => {
+      for (let i = 0; i < 8; i++) {
+        setTimeout(() => {
+          const p = document.createElement("span");
+          p.textContent = particulas[Math.floor(Math.random() * particulas.length)];
+          p.style.cssText = `
+            position: absolute;
+            font-size: ${0.7 + Math.random() * 0.6}rem;
+            left: ${5 + Math.random() * 85}%;
+            top: ${10 + Math.random() * 65}%;
+            pointer-events: none;
+            z-index: 10;
+            color: #f0d080;
+            animation: goldenExplosion 1s ease forwards;
+          `;
+          card.appendChild(p);
+          setTimeout(() => p.remove(), 1000);
+        }, i * 80);
+      }
+    });
+  });
+}
+
+
+
+function iniciarEfectoAuraCorazones() {
+  document.querySelectorAll(".efecto-aura-corazones").forEach(card => {
+    if (card._auraCorazonesInit) return;
+    card._auraCorazonesInit = true;
+
+    const emojis = ["♥", "♡", "💕", "✨", "♥"];
+    const cantidad = 6;
+    const radio = 120; // distancia del centro del cupón
+
+    // Crear corazones orbitando
+    emojis.slice(0, cantidad).forEach((emoji, i) => {
+      const h = document.createElement("span");
+      h.textContent = emoji;
+      const angulo = (360 / cantidad) * i;
+      const duracion = 4 + Math.random() * 2;
+      const delay = -(duracion / cantidad) * i; // distribuidos en la órbita
+
+      h.style.cssText = `
+        position: absolute;
+        font-size: ${0.7 + Math.random() * 0.4}rem;
+        color: ${Math.random() > 0.5 ? "#e8a0b4" : "#c26e8a"};
+        pointer-events: none;
+        z-index: 10;
+        opacity: 0;
+        top: 50%;
+        left: 50%;
+        transform-origin: 0 0;
+        animation: orbitar${card._auraCorazonesInit ? "" : ""} ${duracion}s linear ${delay}s infinite;
+      `;
+
+      // CSS personalizado por elemento via style tag
+      const id = `aura-corazon-${Math.random().toString(36).slice(2)}`;
+      h.id = id;
+
+      const style = document.createElement("style");
+      style.textContent = `
+        #${id} {
+          animation: none;
+        }
+      `;
+      document.head.appendChild(style);
+
+      card.appendChild(h);
+
+      // Animar manualmente con JS para control total
+      let angActual = angulo;
+      let visible = false;
+
+      function tick() {
+        angActual += 360 / (duracion * 60);
+        if (angActual >= 360) angActual -= 360;
+
+        const rad = (angActual * Math.PI) / 180;
+        const x = Math.cos(rad) * radio;
+        const y = Math.sin(rad) * (radio * 0.45); // elipse, no círculo
+
+        h.style.transform = `translate(${x}px, ${y}px) scale(${0.8 + Math.abs(Math.sin(rad)) * 0.4})`;
+        h.style.opacity = visible ? (0.4 + Math.abs(Math.sin(rad)) * 0.6).toString() : "0";
+        h.style.zIndex = Math.sin(rad) > 0 ? "10" : "-1"; // pasa por detrás y por delante
+
+        requestAnimationFrame(tick);
+      }
+
+      // Solo aparecen al hover
+      card.addEventListener("mouseenter", () => { visible = true; });
+      card.addEventListener("mouseleave", () => { visible = false; });
+
+      tick();
+    });
+  });
+}
+
+
+function iniciarEfectoMagnetico() {
+  document.querySelectorAll(".efecto-magnetico").forEach(card => {
+    if (card._magneticoInit) return;
+    card._magneticoInit = true;
+
+    card.addEventListener("mousemove", e => {
+      const rect = card.getBoundingClientRect();
+      const cx = rect.left + rect.width  / 2;
+      const cy = rect.top  + rect.height / 2;
+      const dx = (e.clientX - cx) / (rect.width  / 2);
+      const dy = (e.clientY - cy) / (rect.height / 2);
+
+      card.style.setProperty("--mag-x",  `${dx * 8}px`);
+      card.style.setProperty("--mag-y",  `${dy * 5}px`);
+      card.style.setProperty("--mag-rx", `${-dy * 7}deg`);
+      card.style.setProperty("--mag-ry", `${dx * 9}deg`);
+      card.classList.add("magnetico-activo");
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.classList.remove("magnetico-activo");
+      card.style.removeProperty("--mag-x");
+      card.style.removeProperty("--mag-y");
+      card.style.removeProperty("--mag-rx");
+      card.style.removeProperty("--mag-ry");
+    });
+  });
+}
+
+function iniciarEfectoRipple() {
+  document.querySelectorAll(".efecto-ripple").forEach(card => {
+    if (card._rippleInit) return;
+    card._rippleInit = true;
+
+    let ultimoRipple = 0;
+
+    card.addEventListener("mousemove", e => {
+      const ahora = Date.now();
+      if (ahora - ultimoRipple < 400) return; // máx 1 ripple cada 400ms
+      ultimoRipple = ahora;
+
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const ripple = document.createElement("span");
+      ripple.style.cssText = `
+        position: absolute;
+        left: ${x}px;
+        top: ${y}px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 2px solid rgba(194,110,138,0.6);
+        background: transparent;
+        pointer-events: none;
+        z-index: 3;
+        animation: rippleOnda 0.7s ease forwards;
+      `;
+      card.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 700);
+    });
+  });
+}
+
+
+function iniciarEfectoChispas() {
+  const emojis = ["⚡", "💢", "✸", "🔥", "❗", "💥"];
+  document.querySelectorAll(".efecto-chispas").forEach(card => {
+    if (card._chispasInit) return;
+    card._chispasInit = true;
+    card.addEventListener("mouseenter", () => {
+      for (let i = 0; i < 7; i++) {
+        setTimeout(() => {
+          const h = document.createElement("span");
+          h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+          h.style.cssText = `
+            position: absolute;
+            font-size: ${0.7 + Math.random() * 0.7}rem;
+            left: ${5 + Math.random() * 85}%;
+            top: ${15 + Math.random() * 55}%;
+            pointer-events: none;
+            z-index: 999;
+            animation: chispaElectrica ${0.6 + Math.random() * 0.5}s ease forwards;
+          `;
+          card.appendChild(h);
+          setTimeout(() => h.remove(), 1100);
+        }, i * 90);
+      }
+    });
+  });
+}
+
+
+
+function iniciarEfectoCustom() {
+  document.querySelectorAll(".vale").forEach(card => {
+    if (card._customInit) return;
+
+    const tituloEl = card.querySelector(".vale-titulo");
+    if (!tituloEl) return;
+
+    const config = EFECTOS_CUSTOM[tituloEl.textContent.trim()];
+    if (!config) return;
+
+    card._customInit = true;
+    card.style.overflow = "visible";
+
+    function crearItem() {
+      const src = config.items[Math.floor(Math.random() * config.items.length)];
+      const el  = document.createElement("span");
+
+      el.style.cssText = `
+        position: absolute;
+        left: ${5 + Math.random() * 85}%;
+        top: ${10 + Math.random() * 65}%;
+        pointer-events: none;
+        z-index: 10;
+        font-size: ${config.tamaño || "1.2rem"};
+        animation: customFlotante ${1.5 + Math.random() * 1.5}s ease forwards;
+      `;
+
+      if (src.includes("/")) {
+        el.innerHTML = `<img src="${src}" 
+          style="width:${config.tamaño || "1.2rem"};height:${config.tamaño || "1.2rem"};object-fit:contain;display:block;"
+          onerror="this.replaceWith(document.createTextNode('✨'))">`;
+      } else {
+        el.textContent = src;
+      }
+
+      card.appendChild(el);
+      setTimeout(() => el.remove(), 3000);
+    }
+
+    card.addEventListener("mouseenter", () => {
+      for (let i = 0; i < (config.cantidad || 5); i++) {
+        setTimeout(() => crearItem(), i * 100);
+      }
+    });
+  });
+}
 
 /* ────────────────────────────────────────────────
    PALABRAS MALSONANTES — editá a gusto
    ──────────────────────────────────────────────── */
-const PALABRAS_MALAS = ["salame", "puto", "gay", "idiota", "pelotudo", "boludo", "estupido", "imbecil", "garca", "hdp", "hijo de puta", "forro", "pendejo", "maricon", "zarpado", "choto", "cagón", "culiao", "la concha de tu madre", "mierda", "bostero", "cornudo", "gil", "loco", "tarado", "tonto", "verga", "pija", "chupapija", "coger", "follar", "coño", "zorra", "puta madre", "pajero", "culero"];
+const PALABRAS_MALAS = [ "trolo","salame", "puto", "gay", "idiota", "pelotudo", "boludo", "estupido", "imbecil", "garca", "hdp", "hijo de puta", "forro", "pendejo", "maricon", "zarpado", "choto", "cagón", "culiao", "la concha de tu madre", "mierda", "bostero", "cornudo", "gil", "loco", "tarado", "tonto", "verga", "pija", "chupapija", "coger", "follar", "coño", "zorra", "puta madre", "pajero", "culero"];
 
 const RESPUESTAS_MALAS = [
   "😐 en serio? eso es lo mejor que se te ocurrió?",
@@ -718,7 +1033,7 @@ function renderGrilla() {
   contador.innerHTML = `<span>${totalDisp}</span> disponibles · <span>${totalCanj}</span> canjeados de <span>${todos.length}</span> cupones`;
 
   if (filtrados.length === 0) {
-    grilla.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--texto-suave);font-style:italic;font-family:'Playfair Display',serif;font-size:1.1rem;">No hay cupones aquí todavía ♥</div>`;
+    grilla.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--texto-suave);font-style:italic;font-family:'Playfair Display',serif;font-size:1.1rem;">No hay cupones aca todavía ♥</div>`;
     return;
   }
 
@@ -748,22 +1063,34 @@ function renderGrilla() {
 
     const labelPie = esSexy ? "Cupón Sexy" : esGamer ? "Cupón Gamer" : v.tipo === "cotidiano" ? "Cupón Cotidiano" : "Cupón · Aniversario";
 
-    div.innerHTML = `
-      ${esGamer ? `<span class="vale-badge">🎮 Gamer</span>` : ""}
-      ${esSexy  ? `<span class="vale-badge badge-sexy">💋 Sex</span>`   : ""}
-      <button class="btn-canjear" data-idx="${idx}" ${esCanj ? "disabled" : ""}>Canjear</button>
-      <div class="vale-cuerpo">
-        <div class="vale-emoji">${v.emoji}</div>
-        <div class="vale-titulo">${v.titulo}</div>
-        ${v.descripcion ? `<div class="vale-descripcion">${v.descripcion}</div>` : ""}
+    // Aura por categoría
+    if (esGamer)          div.classList.add("aura-gamer");
+    else if (esSexy)      div.classList.add("aura-sexy");
+    else if (esCotidiano) div.classList.add("aura-cotidiana");
+    else                  div.classList.add("aura-romantica");
+
+  div.innerHTML = `
+    <div class="vale-categoria-franja"></div>
+    ${esGamer ? `<span class="vale-badge">🎮 Gamer</span>` : ""}
+    ${esSexy  ? `<span class="vale-badge badge-sexy">💋 Sex</span>` : ""}
+    <button class="btn-canjear" data-idx="${idx}" ${esCanj ? "disabled" : ""}>Canjear</button>
+    <div class="vale-cuerpo">
+      <div class="vale-emoji">
+        ${v.emoji.includes("/") || v.emoji.endsWith(".png") || v.emoji.endsWith(".jpg") || v.emoji.endsWith(".webp")
+          ? `<img src="${v.emoji}" alt="emoji" class="vale-emoji-img" onerror="this.replaceWith(document.createTextNode('${v.emojiBackup || '✨'}'))">`
+          : v.emoji
+        }
       </div>
-      <div class="sello">Canjeado ♥</div>
-      <div class="vale-tachado"></div>
-      <div class="vale-pie">
-        <span class="vale-label">${labelPie}</span>
-        <span class="vale-numero">${String(idx + 1).padStart(2, "0")}</span>
-      </div>
-    `;
+      <div class="vale-titulo">${v.titulo}</div>
+      ${v.descripcion ? `<div class="vale-descripcion">${v.descripcion}</div>` : ""}
+    </div>
+    <div class="sello">Canjeado ♥</div>
+    <div class="vale-tachado"></div>
+    <div class="vale-pie">
+      <span class="vale-label">${labelPie}</span>
+      <span class="vale-numero">${String(idx + 1).padStart(2, "0")}</span>
+    </div>
+  `;
     grilla.appendChild(div);
   });
 
@@ -771,7 +1098,14 @@ function renderGrilla() {
     iniciarEfectoCorazones();
     iniciarEfectoBerenjenas();
     iniciarEfectoPixels();
+    iniciarEfectoGolden();
+    iniciarEfectoAuraCorazones();
+    iniciarEfectoMagnetico();
+    iniciarEfectoRipple();
+    iniciarEfectoChispas();
+    iniciarEfectoCustom();
   }, 100);
+  
 }
 
 
@@ -849,6 +1183,24 @@ btnConfirmar.addEventListener("click", async () => {
   if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
   lanzarConfetti(modoGamer);
   mostrarToast("Cupón canjeado! ♥ Enviando aviso...");
+
+  // Animar tachado
+  setTimeout(() => {
+    const cards = grilla.querySelectorAll(".vale.canjeado");
+    cards.forEach(card => {
+      const tachado = card.querySelector(".vale-tachado");
+      if (!tachado) return;
+      tachado.style.width   = "0%";
+      tachado.style.opacity = "0";
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          tachado.style.transition = "width 0.8s cubic-bezier(.77,0,.18,1), opacity 0.3s ease";
+          tachado.style.width   = "84%";
+          tachado.style.opacity = "0.75";
+        });
+      });
+    });
+  }, 50);
 
   try {
     await emailjs.send(CONFIG_EMAIL.SERVICE_ID, CONFIG_EMAIL.TEMPLATE_ID, {
@@ -1231,7 +1583,6 @@ crearFraseFondo();
    INICIO
    ══════════════════════════════════════════════ */
 renderGrilla();
-
 /* ══════════════════════════════════════════════
    CONTADOR DÍAS JUNTOS
    ══════════════════════════════════════════════ */
