@@ -1971,3 +1971,11 @@ article.buu-card:hover .buu-mensaje { opacity: 1; }
   background: rgba(255,100,200,0.15);
   color: #fff;
 }
+
+
+.chat-burbuja img {
+  max-width: 140px;
+  border-radius: 10px;
+  display: block;
+  margin: 4px 0;
+}

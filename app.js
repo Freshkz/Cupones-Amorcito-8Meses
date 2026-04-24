@@ -187,7 +187,7 @@ const CUPONES_ROMANTICOS = [
     descripcion: "Elijo yo la película, preparás el pochoclo. Sin quejas.",
     efecto: ["efecto-brillo", "efecto-glow", "efecto-aura-rose"],
   },
-  { emoji: "🛌", titulo: "Cupón para dormir hasta tarde",  descripcion: "Un fin de semana sin que nadie te despierte.",                   efecto: ["efecto-corazones", "efecto-sparkle"] },
+  { emoji: "img/goku-zzz.gif", emojiBackup: "🛌🏃", titulo: "Cupón para dormir hasta tarde",  descripcion: "Un fin de semana sin que nadie te despierte.",                   efecto: ["efecto-corazones", "efecto-sparkle"] },
   { emoji: "🌅", titulo: "Cupón para una escapada",        descripcion: "A donde quieras ir juntos. Sin peros.",                          efecto: [ "efecto-aura-corazones", "efecto-sparkle"] },
   { emoji: "img/goku_dancing.gif",emojiBackup: "🎶" ,titulo: "Cupón para bailar en casa",      descripcion: "Tu playlist, yo te sigo. Sin importar la hora.",                 efecto: ["efecto-corazones", "efecto-sparkle"] },
   { emoji: "🍳", titulo: "Cupón para desayuno en cama",    descripcion: "Me levanto primero y te lo llevo. Prometido.",                   efecto: ["efecto-corazones", "efecto-brillo"] },
@@ -204,7 +204,7 @@ const CUPONES_SEXY = [
   { emoji: "🛁", titulo: "Cupón para un baño juntos",            descripcion: "Velas, espuma, y lo que venga después.",                          efecto:["efecto-glow", "efecto-aura-rose", "efecto-tilt"] },
   { emoji: "💋", titulo: "Cupón para que te bese donde quieras", descripcion: "Sin restricciones. El control lo tenés vos.",                      efecto: ["efecto-brillo", "efecto-berenjenas", "efecto-tilt"] },
   { emoji: "🙈", titulo: "Cupón para una fantasía tuya",         descripcion: "Me decís, yo cumplo. Sin preguntas.",                               efecto:["efecto-aura-rose", "efecto-berenjenas", "efecto-tilt"] },
-  { emoji: "😊", titulo: "Cupón para TOTA",            descripcion: "Lo que imagines, lo hacemos realidad.",                             efecto: ["efecto-glow", "efecto-berenjenas", "efecto-aura-rose", "efecto-tilt"] },
+  { emoji: "img/smiling-jinu.gif",emojiBackup: "😊" , titulo: "Cupón para TOTA",            descripcion: "Lo que imagines, lo hacemos realidad.",                             efecto: ["efecto-glow", "efecto-berenjenas", "efecto-aura-rose", "efecto-tilt"] },
   { emoji: "🌙", titulo: "Cupón para una noche de hotel",        descripcion: "Solo para nosotros dos. Nada de interrupciones.",                   efecto: ["efecto-glow", "efecto-berenjenas", "efecto-aura-rose", "efecto-tilt"] },
   { emoji: "👀", titulo: "Cupón para un striptease",             descripcion: "Lo que pedís, te lo doy. Sin prisa.",                               efecto: ["efecto-aura-rose", "efecto-berenjenas", "efecto-tilt"] },
   { emoji: "🍓", titulo: "Cupón para una noche de exploración",  descripcion: "Vos mandás. Yo acepto todo lo que propongás.",                      efecto: [ "efecto-berenjenas", "efecto-tilt"] },
@@ -213,12 +213,12 @@ const CUPONES_SEXY = [
 
 
 const CUPONES_GAMER = [
-  { emoji: "🎮", titulo: "Cupón para una noche de Dragon Ball Online", descripcion: "A las 8 nos levantamos a jugar. Seré tu healer(no), tu support(no), lo que necesites.",              efecto: ["efecto-pixels", "efecto-brillo", "efecto-magnetico"] },
-  { emoji: "🏆", titulo: "Cupón para elegir el juego",                 descripcion: "Tu elección, sin discusión. Esa noche mandás vos.",                                            efecto: ["efecto-sparkle", "efecto-neon-rose", "efecto-magnetico"] },
+  { emoji: "img/goku-ultra.gif", emojiBackup: "🏆", titulo: "Cupón para una noche de Dragon Ball", descripcion: "A las 8 nos levantamos a jugar. Seré tu healer(no), tu support(no), lo que necesites.",              efecto: ["efecto-pixels", "efecto-brillo", "efecto-magnetico"] },
+  { emoji: "🎮", titulo: "Cupón para elegir el juego",                 descripcion: "Tu elección, sin discusión. Esa noche mandás vos.",                                            efecto: ["efecto-sparkle", "efecto-neon-rose", "efecto-magnetico"] },
   { emoji: "🕹️", titulo: "Cupón para modo co-op",                      descripcion: "Un juego para dos. Somos el mejor equipo del mundo.",                                          efecto: ["efecto-pixels", "efecto-tilt", "efecto-magnetico"] },
   { emoji: "⚔️", titulo: "Cupón para raid especial",                   descripcion: "Nos quedamos despiertos hasta ganarlo. Sin rendirnos.",                                        efecto: ["efecto-pixels", "efecto-glow", "efecto-magnetico"] },
   { emoji: "🌟", titulo: "Cupón para stream juntos",                   descripcion: "Ponemos la cámara y jugamos como si fuéramos streamers famosos.",                              efecto: ["efecto-pixels", "efecto-sparkle" , "efecto-magnetico"] },
-  { emoji: "🎯", titulo: "Cupón para 1v1",                             descripcion: "Te dejo ganar... o capaz no. Spoiler: te voy a dejar ganar.",                                  efecto: ["efecto-pixels", "efecto-tilt", "efecto-brillo"] },
+  { emoji: "img/picoro.gif",emojiBackup: "🎯" ,titulo: "Cupón para 1v1",                             descripcion: "Te dejo ganar... o capaz no. Spoiler: te voy a dejar ganar.",                                  efecto: ["efecto-pixels", "efecto-tilt", "efecto-brillo"] },
   { emoji: "👻", titulo: "Cupón para Phasmophobia",                    descripcion: "Volvemos a donde empezó todo 👻 pero esta vez te agarro más fuerte… porque ya sé que no te quiero soltar 😳", efecto: ["efecto-pixels", "efecto-magnetico", "efecto-brillo"] },
   { emoji: "🎥", titulo: "Cupón para Stremearte",                      descripcion: "Activa este cupón y te voy a stremear cualquier cosa que me pidas. Me convierto en el mejor jugador del mundo… o al menos hago que parezca 😎 (incluye dedicarte cada kill… si es que hay alguna)..", efecto: ["efecto-pixels", "efecto-magnetico", "efecto-brillo"] },
   { emoji: "img/gems.png", emojiBackup: "💎",titulo: "Cupón para DropLegendario",        descripcion: "Este cupón otorga un boost de gemas en Gekshin Sqquadra para cumplir tus deseos mas cursed o mas blessed ✨.(la cantidad depende del bolsillo del susodicho 🥹)",efecto: ["efecto-ki", "efecto-magnetico", "efecto-brillo", "efecto-pixels"] },
@@ -237,8 +237,8 @@ const CUPONES_COTIDIANOS = [
   { emoji: "💆", titulo: "Cupón para un masaje",           descripcion: "30 minutos de masaje de espalda. Sin límite de tiempo.",          efecto: ["efecto-glow", "efecto-aura-rose", "efecto-magnetico"] },
   { emoji: "🍔", titulo: "Cupón para BIG PONS",            descripcion: "Este cupón invoca a Big Pons 🍔, Yo pago (😠)",             efecto: ["efecto-shine", "efecto-sparkle", "efecto-magnetico"] },
   { emoji: "🍕", titulo: "Cupón para pedir comida",        descripcion: "Una noche sin cocinar. Pedimos lo que quieras.",                  efecto: ["efecto-sparkle", "efecto-magnetico"] },
-  { emoji: "😤", titulo: "Cupón ¿Quién es esa?",                  descripcion: "Este cupón me permite hacerme el celoso ",             efecto: ["efecto-shine", "efecto-tilt", "efecto-chispas"] },
-  { emoji: "😡", titulo: "Cupón para Pelear",                  descripcion: "Este cupón activa una pelea falsa, puede ser por cualquier cosa! (WARNING:Reírnos y olvidarnos en 2 minutos 💘) ",efecto: ["efecto-shine", "efecto-tilt", "efecto-chispas"] },
+  { emoji: "img/rumi-wtf.gif", emojiBackup: "😤", titulo: "Cupón ¿Quién es esa?",                  descripcion: "Este cupón me permite hacerme el celoso ",             efecto: ["efecto-shine", "efecto-tilt", "efecto-chispas"] },
+  { emoji: "img/zoe-angry.gif", emojiBackup: "😡", titulo: "Cupón para Pelear",                  descripcion: "Este cupón activa una pelea falsa, puede ser por cualquier cosa! (WARNING:Reírnos y olvidarnos en 2 minutos 💘) ",efecto: ["efecto-shine", "efecto-tilt", "efecto-chispas"] },
 ];
 /* ────────────────────────────────────────────────
    MENSAJES SECRETOS
@@ -345,17 +345,29 @@ const CONTRASENAS_SECRETAS = {
    ──────────────────────────────────────────────── */
 const CONVERSACIONES = [
   [
-    { quien: "Fresh", texto: "hola", delay: 800 },
-    { quien: "Kin", texto: "holaaaa 💕", delay: 1600 },
-    { quien: "Fresh", texto: "jugamos?", delay: 2800 },
-    { quien: "Kin", texto: "a las 8 nos levantamos a jugar dragon ball online?", delay: 5200 },
-    { quien: "Fresh", texto: "Obvio si, el domingo tenemos que jugar NASHE", delay: 6000 },
-    { quien: "Fresh", texto: "SI O SI", delay: 6950 },
-    { quien: "Kin", texto: "jaja amor ♥ te amo mucho sabs?", delay: 7200 },
-    { quien: "Fresh", texto: "te amo más, olor a caquita", delay: 8600 }, 
-    { quien: "Kin", texto: "🥺", delay: 9800 }, { quien: "Kin", texto: "POKEEEEE", delay: 10500 },
-    { quien: "Fresh", texto: "Ss lo mejor que me pasó, en serio", delay: 11200 },
-    { quien: "Kin", texto: "yo también te amo lindo 💜", delay: 12600 },
+    { quien: "Fresh", texto: "Hola", delay: 1800 },
+    { quien: "Kin", texto: "holaaaa 💕", delay: 4200 },
+    { quien: "Fresh", texto: "¿Qué haces?", delay: 7200 },
+    { quien: "Kin", texto: "nadaa, aburrida 😭", delay: 11000 },
+    { quien: "Fresh", texto: "¿Jugamos algo?", delay: 15000 },
+    { quien: "Kin", texto: "obvioo, a qué?", delay: 19000 },
+    { quien: "Fresh", texto: "Dragon Ball online 😏", delay: 24000 },
+    { quien: "Kin", texto: "JAJAJA dale, a las 8 estamos?", delay: 30000 },
+    { quien: "Fresh", texto: "De una", delay: 34000 },
+    { quien: "Fresh", texto: "El domingo igual tenemos que viciar fuerte", delay: 39000 },
+    { quien: "Kin", texto: "NASHE", delay: 44000 },
+    { quien: "Fresh", texto: "Sí o sí", delay: 48000 },
+    { quien: "Kin", texto: "me encanta jugar con vos jsjs 💕", delay: 54000 },
+    { quien: "Fresh", texto: "A mí también… posta", delay: 60000 },
+    { quien: "Kin", texto: "🥺", delay: 64000 },
+    { quien: "Fresh", texto: "Jaja, vení", delay: 70000 },
+    { quien: "Fresh", texto: "Igual, fuera de joda… sos re importante para mí", delay: 78000 },
+    { quien: "Kin", texto: "ay 🥺 vos también", delay: 86000 },
+    { quien: "Fresh", texto: "Te quiero mucho", delay: 94000 },
+    { quien: "Kin", texto: "yo más 💜", delay: 102000 },
+    { quien: "Fresh", texto: "Mentira, yo más. Olor a caquita 😌", delay: 110000 },
+    { quien: "Kin", texto: "🥺💕", delay: 118000 },
+    { quien: "Kin", texto: "POKEEEEE", delay: 126000 },
   ],
 
   [
@@ -444,6 +456,7 @@ const CONVERSACIONES = [
     { quien: "Kin", texto: "entonces activa ese modo… ya sabes cual", delay: 14000 },
     { quien: "Fresh", texto: "El modo prohibido? 😳", delay: 17000 },
     { quien: "Kin", texto: "ese mismo… el de la tota 😈", delay: 20000 },
+    { quien: "Fresh", imagen: "img/ojo.jpg", delay: 25000 },
   ],
 
 
@@ -501,10 +514,10 @@ const CONVERSACIONES = [
   ],
 
   [
-    { quien: "Fresh", texto: "Hola", delay: 800 },
+    { quien: "Fresh", texto: "Hola amorrrrrr", delay: 800 },
     { quien: "Kin", texto: "holaaaa 💕", delay: 2000 },
-    { quien: "Fresh", texto: "Jugamos?", delay: 3500 },
-    { quien: "Kin", texto: "Entrandooo", delay: 4500 },
+    { quien: "Fresh",texto: "Sale Gekshin?", delay: 4500 },
+    { quien: "Kin", texto: "Entrandooo", delay: 5000 },
   ],
 
   [
@@ -517,10 +530,12 @@ const CONVERSACIONES = [
     { quien: "Fresh", texto: "entramos?", delay: 800 },
     { quien: "Kin", texto: "ya estoy 😎", delay: 1800 },
     { quien: "Fresh", texto: "carriame", delay: 2600 },
+    { quien: "Kin", imagen: "img/jay-like.gif", delay: 5600 },
   ],
 
   [
-    { quien: "Fresh", texto: "estas?", delay: 800 },
+    { quien: "Fresh",imagen: "img/gojo_lindo.gif", delay: 800 },
+    { quien: "Fresh", texto: "estas?",  imagen: "img/gojo_lindo.gif", delay: 1000 },
     { quien: "Kin", texto: "si bb 💕", delay: 1800 },
     { quien: "Fresh", texto: "venis?", delay: 3000 },
     { quien: "Kin", texto: "obvio 😳", delay: 4200 },
@@ -532,6 +547,7 @@ const CONVERSACIONES = [
     { quien: "Kin", texto: "nooo 😭", delay: 1800 },
     { quien: "Fresh", texto: "seguro?", delay: 3000 },
     { quien: "Kin", texto: "te estaba stalkeando 💀", delay: 4200 },
+    { quien: "Kin", imagen: "img/vegeta-goku.gif", delay: 6200 },
   ],
 
   [
@@ -539,6 +555,7 @@ const CONVERSACIONES = [
     { quien: "Kin", texto: "si 😭", delay: 1800 },
     { quien: "Fresh", texto: "pedimos algo?", delay: 3000 },
     { quien: "Kin", texto: "si vos elegis 💕", delay: 4200 },
+    { quien: "Fresh", imagen: "img/gun-sad.gif", delay: 6000 },
   ],
 
   [
@@ -1863,50 +1880,52 @@ function mostrarChatRandom() {
   const contenedor = document.getElementById("chat-mensajes");
   contenedor.innerHTML = "";
 
+  // Cancelar timeouts anteriores
+  if (window._chatTimeouts) {
+    window._chatTimeouts.forEach(t => clearTimeout(t));
+  }
+  window._chatTimeouts = [];
+
   const chat = CONVERSACIONES[Math.floor(Math.random() * CONVERSACIONES.length)];
 
   chat.forEach((msg, i) => {
+    const t1 = setTimeout(() => {
+      // Si el chat se cerró, no hacer nada
+      if (!chatAbierto) return;
 
-    setTimeout(() => {
-
-      // 👉 BURBUJAS DE ESCRIBIENDO (3 puntitos)
       const typing = document.createElement("div");
       typing.classList.add("chat-typing");
-
-      typing.innerHTML = `
-        <span></span>
-        <span></span>
-        <span></span>
-      `;
-
-      // alineación tipo WhatsApp
+      typing.innerHTML = `<span></span><span></span><span></span>`;
       typing.style.alignSelf = msg.quien === "Fresh" ? "flex-end" : "flex-start";
-
       contenedor.appendChild(typing);
       contenedor.scrollTop = contenedor.scrollHeight;
 
-      // ⏳ tiempo antes del mensaje
-      setTimeout(() => {
+      const duracion = 700 + (msg.texto?.length || 10) * 40;
+
+      const t2 = setTimeout(() => {
+        if (!chatAbierto) return;
 
         typing.remove();
 
         const burbuja = document.createElement("div");
         burbuja.classList.add("chat-burbuja", msg.quien);
-
         burbuja.innerHTML = `
           <div class="chat-nombre">${msg.quien === "Fresh" ? "Fresh" : "Kin"}</div>
-          ${msg.texto}
+          ${msg.imagen ? `<img src="${msg.imagen}" style="max-width:140px;border-radius:10px;display:block;margin:4px 0;" onerror="this.style.display='none'">` : ""}
+          ${msg.texto || ""}
         `;
 
         contenedor.appendChild(burbuja);
         contenedor.scrollTop = contenedor.scrollHeight;
-
-        // 🔊 sonido tipo iPhone
         reproducirSonidoMensaje();
 
-      }, 700 + msg.texto.length * 40);
+      }, duracion);
+
+      window._chatTimeouts.push(t2);
 
     }, msg.delay || i * 1200);
+
+    window._chatTimeouts.push(t1);
   });
 }
 
@@ -1917,6 +1936,17 @@ function abrirCerrarChat(abrir) {
 
   btnChatToggle.style.opacity = abrir ? "0" : "1";
   btnChatToggle.style.pointerEvents = abrir ? "none" : "auto";
+
+  if (!abrir) {
+    // Cancelar todos los timeouts al cerrar
+    if (window._chatTimeouts) {
+      window._chatTimeouts.forEach(t => clearTimeout(t));
+      window._chatTimeouts = [];
+    }
+    // Limpiar mensajes para que la próxima apertura empiece limpio
+    document.getElementById("chat-mensajes").innerHTML = "";
+  }
+
   if (chatAbierto) {
     mostrarChatRandom();
   }
