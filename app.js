@@ -78,6 +78,45 @@ const CONFIG_TEMPORIZADOR = {
 
 
 
+  /* ────────────────────────────────────────────────
+   MODALES DE PERSONAJES — agregá los que quieras
+   ──────────────────────────────────────────────── */
+const PERSONAJES = [
+  {
+    id:          "buu",
+    contrasena:  "majin buu",
+    fondo:       "img/buu.png",
+    personaje:   "img/kidbuu.png",
+    titulo:      "💕 Mensaje Secreto 💕",
+    texto:       "Si Majin Buu puede volverse bueno por cariño… imaginate lo que hacés vos conmigo 💖",
+    confetti:    false,
+  },
+  {
+    id:          "gojo",
+    contrasena:  "gojo satoru",
+    fondo:       "img/gojo.png",
+    personaje:   "img/gojo2.png",
+    titulo:      "Descubriste el secreto más fuerte…",
+    texto:       "Vos",
+    confetti:    true,
+  },
+
+  {
+    id:          "angel",
+    contrasena:  "angel",
+    fondo:       "img/PRIME.jpg",
+    personaje:   "img/angel_gojo.png",
+    titulo:      "QUE BRONCA ME DAS  TE AMO",
+    texto:       "TE AMO TE TE AMO TE AMO TE AMO TE AMO TE AMO",
+    confetti:    true,
+  },
+  // Para agregar uno nuevo, copiá el bloque de arriba y cambiá los valores
+];
+
+
+
+
+
 
 
 /* ────────────────────────────────────────────────
@@ -294,11 +333,10 @@ const CONTRASENAS_SECRETAS = {
   "kin":                            "Kin",
   "negros":                         "Negros",
   "jinu":                           "jinu",
-  "buu":                            "buu-modal",
   "modo gamer":                     "gamer",        // especial: activa modo gamer
   "reset cupones":                  "reset",        // especial: resetea todos los canjeados
-  "tota":                           "sexy-toggle",  // especial: muestra/oculta cupones sexy
-  "totita":                         "sexy-toggle",  // especial: igual que tota
+  "modo tota":                           "sexy-toggle",  // especial: muestra/oculta cupones sexy
+  "modo totita":                         "sexy-toggle",  // especial: igual que tota
   "amor":                           "reset-modo",
 };
 
@@ -316,9 +354,152 @@ const CONVERSACIONES = [
     { quien: "Kin", texto: "jaja amor ♥ te amo mucho sabs?", delay: 7200 },
     { quien: "Fresh", texto: "te amo más, olor a caquita", delay: 8600 }, 
     { quien: "Kin", texto: "🥺", delay: 9800 }, { quien: "Kin", texto: "POKEEEEE", delay: 10500 },
-    { quien: "Fresh", texto: "sos lo mejor que me pasó, en serio", delay: 11200 },
+    { quien: "Fresh", texto: "Ss lo mejor que me pasó, en serio", delay: 11200 },
     { quien: "Kin", texto: "yo también te amo lindo 💜", delay: 12600 },
   ],
+
+  [
+    { quien: "Fresh", texto: "Amor tengo hambre", delay: 800 },
+    { quien: "Kin", texto: "otra vez? jajaja", delay: 1800 },
+    { quien: "Fresh", texto: "Necesito algo dulce… MUY dulce 🍫", delay: 3200 },
+    { quien: "Kin", texto: "mmm alguien rosa y gordito estaría orgulloso", delay: 4800 },
+    { quien: "Fresh", texto: "El gordo que  convierte todo en chocolate? 👀", delay: 7000 },
+    { quien: "Kin", texto: "exacto… pense en él 💗", delay: 8500 },
+  ],
+
+  [
+    { quien: "Fresh", texto: "Amor viste ese personaje re fachero?", delay: 800 },
+    { quien: "Kin", texto: "cual? 😏", delay: 2000 },
+    { quien: "Fresh", texto: "El de pelo blanco… ojos tapados esta roto, se parece a mi.....", delay: 3500 },
+    { quien: "Kin", texto: "aaa ya se quien decís 😳", delay: 5000 },
+    { quien: "Fresh", texto: "En el cielo y en paraguay soy el unico albañil", delay: 6500 },
+    { quien: "Kin", texto: "na bueno....capaz sirve para algo ese nombre...👀", delay: 8000 },
+  ],
+
+  [
+    { quien: "Fresh", texto: "Vos sos un angel posta", delay: 800 },
+    { quien: "Kin", texto: "ay 🥺 por?", delay: 2000 },
+    { quien: "Fresh", texto: "Porque siempre cuidas a los petes 💕", delay: 3500 },
+    { quien: "Kin", texto: "bueno… capaz esa palabra es importante 😏", delay: 5200 },
+  ],
+
+
+  [
+    { quien: "Fresh", texto: "Te digo algo pero no te rías", delay: 1200 },
+    { quien: "Kin", texto: "no prometo nada JAJA", delay: 3000 },
+    { quien: "Fresh", texto: "Yo ya te considero mi esposa oficialmente", delay: 5000 },
+    { quien: "Kin", texto: "JAJAJA que decis", delay: 7000 },
+    { quien: "Fresh", texto: "Es que posta… en mi cabeza ya lo sos", delay: 9000 },
+    { quien: "Kin", texto: "entonces decilo en inglés 😏", delay: 11000 },
+    { quien: "Fresh", texto: "Mmm… capaz eso sirve para algo", delay: 13000 },
+  ],
+
+
+  [
+    { quien: "Fresh", texto: "Hoy estoy en modo raro", delay: 1200 },
+    { quien: "Kin", texto: "modo que?", delay: 3000 },
+    { quien: "Fresh", texto: "MODO VICIO TOTAL", delay: 5000 },
+    { quien: "Kin", texto: "ah listo, no salimos mas entonces", delay: 7000 },
+    { quien: "Fresh", texto: "No no… es como un modo especial", delay: 9000 },
+    { quien: "Kin", texto: "tipo cuando activas algo y cambia todo?", delay: 11000 },
+    { quien: "Fresh", texto: "Exacto… como un comando", delay: 13000 },
+    { quien: "Kin", texto: "y es bastante obvio cual seria 😏", delay: 15000 },
+  ],
+
+
+  [
+    { quien: "Fresh", texto: "Te das cuenta que tu nombre aparece en todos lados?", delay: 1200 },
+    { quien: "Kin", texto: "?? donde JAJA", delay: 3000 },
+    { quien: "Fresh", texto: "En mis contraseñas, en mi cabeza, en todo", delay: 5000 },
+    { quien: "Kin", texto: "ay 🥺", delay: 7000 },
+    { quien: "Fresh", texto: "Es como una clave universal", delay: 9000 },
+    { quien: "Kin", texto: "mmm… capaz literalmente lo es 👀", delay: 11000 },
+    { quien: "Fresh", texto: "Yo digo que pruebes con eso", delay: 13000 },
+  ],
+
+
+
+  [
+    { quien: "Fresh", texto: "Amoor si rompemos todo… se puede resetear?", delay: 800 },
+    { quien: "Kin", texto: "obvio jajaja", delay: 2000 },
+    { quien: "Fresh", texto: "Como a los judios?", delay: 3500 },
+    { quien: "Kin", texto: "exacto… reset y listo 👀", delay: 5200 },
+  ],
+
+
+  [
+    { quien: "Fresh", texto: "amor…", delay: 800 },
+    { quien: "Kin", texto: "decime 💕", delay: 2000 },
+    { quien: "Fresh", texto: "amor amor amor", delay: 3500 },
+    { quien: "Kin", texto: "che creo que eso hace algo 👀", delay: 5200 },
+  ],
+
+
+  [
+    { quien: "Fresh", texto: "Amor estoy aburrido", delay: 1500 },
+    { quien: "Kin", texto: "mmm eso es peligroso 😏", delay: 3500 },
+    { quien: "Fresh", texto: "Cuando me aburro me dan ideas…", delay: 6000 },
+    { quien: "Kin", texto: "ideas o ganas? 👀", delay: 8500 },
+    { quien: "Fresh", texto: "Las dos cosas…", delay: 11000 },
+    { quien: "Kin", texto: "entonces activa ese modo… ya sabes cual", delay: 14000 },
+    { quien: "Fresh", texto: "El modo prohibido? 😳", delay: 17000 },
+    { quien: "Kin", texto: "ese mismo… el de la tota 😈", delay: 20000 },
+  ],
+
+
+  [
+    { quien: "Fresh", texto: "Che hay un modo secreto que casi nadie conoce", delay: 1500 },
+    { quien: "Kin", texto: "a ver 👀", delay: 3500 },
+    { quien: "Fresh", texto: "Es medio… subido de tono", delay: 6000 },
+    { quien: "Kin", texto: "JAJAJA ya me imagino", delay: 8500 },
+    { quien: "Fresh", texto: "Cuando lo activas cambia todo", delay: 11000 },
+    { quien: "Kin", texto: "te pones rarito? 😏", delay: 14000 },
+    { quien: "Fresh", texto: "Digamos que si…", delay: 17000 },
+    { quien: "Fresh", texto: "Probá con una palabra corta… muy nuestra", delay: 20000 },
+  ],
+
+
+
+
+
+  [
+    { quien: "Fresh", texto: "Amor necesito confesarte algo", delay: 1500 },
+    { quien: "Kin", texto: "decime 😳", delay: 3500 },
+    { quien: "Fresh", texto: "A veces entro en un modo…", delay: 6000 },
+    { quien: "Kin", texto: "???", delay: 8500 },
+    { quien: "Fresh", texto: "Un modo donde pienso cosas…", delay: 11000 },
+    { quien: "Kin", texto: "QUE COSAS 😳", delay: 14000 },
+    { quien: "Fresh", texto: "Cosas con vos claramente", delay: 17000 },
+    { quien: "Kin", texto: "ah bueno bueno buenooo 😏", delay: 20000 },
+    { quien: "Fresh", texto: "Creo que ese modo tiene nombre…", delay: 23000 },
+    { quien: "Kin", texto: "y empieza con tota 👀", delay: 26000 },
+  ],
+
+  [
+    { quien: "Fresh", texto: "Hay niveles en todo", delay: 2000 },
+    { quien: "Kin", texto: "explicate", delay: 4200 },
+    { quien: "Fresh", texto: "Uno básico… y otro más avanzado", delay: 7000 },
+    { quien: "Kin", texto: "como los juegos", delay: 9500 },
+    { quien: "Fresh", texto: "Exacto… el primero lo sacas con insistencia normal", delay: 12000 },
+    { quien: "Kin", texto: "y el otro?", delay: 14500 },
+    { quien: "Fresh", texto: "Cuando te pasas bastante de ese número", delay: 17000 },
+    { quien: "Kin", texto: "ah… entonces hay recompensa doble 👀", delay: 19500 },
+  ],
+
+
+
+  [
+    { quien: "Fresh", texto: "Me gustan los secretos que requieren insistencia", delay: 2000 },
+    { quien: "Kin", texto: "por que?", delay: 4200 },
+    { quien: "Fresh", texto: "Porque no cualquiera llega", delay: 7000 },
+    { quien: "Kin", texto: "solo los curiosos", delay: 9500 },
+    { quien: "Fresh", texto: "Los que prueban varias veces", delay: 12000 },
+    { quien: "Kin", texto: "y siguen probando", delay: 14500 },
+    { quien: "Fresh", texto: "Hasta completar algo… tipo un ciclo completo", delay: 17000 },
+    { quien: "Kin", texto: "y después?", delay: 19500 },
+    { quien: "Fresh", texto: "Si siguen incluso más… hay otro secreto 👀", delay: 22000 },
+  ],
+
   [
     { quien: "Fresh", texto: "Hola", delay: 800 },
     { quien: "Kin", texto: "holaaaa 💕", delay: 2000 },
@@ -1063,6 +1244,55 @@ function iniciarEfectoKi() {
     });
   });
 }
+
+
+
+/* ══════════════════════════════════════════════
+   MODALES DE PERSONAJES — generación automática
+   ══════════════════════════════════════════════ */
+function iniciarPersonajes() {
+  const container = document.getElementById("personajes-container");
+
+  PERSONAJES.forEach(p => {
+    // Crear modal
+    const overlay = document.createElement("div");
+    overlay.className = "overlay-buu";
+    overlay.id = `overlay-${p.id}`;
+    overlay.innerHTML = `
+      <article class="buu-card">
+        <img src="${p.fondo}" alt="fondo" class="buu-fondo">
+        <img src="${p.personaje}" alt="${p.id}" class="buu-personaje">
+        <div class="buu-mensaje">
+          <div class="buu-titulo">${p.titulo}</div>
+          <div class="buu-texto">${p.texto}</div>
+        </div>
+      </article>
+      <button class="buu-cerrar" id="${p.id}-cerrar">✕ Cerrar</button>
+    `;
+    container.appendChild(overlay);
+
+    // Listeners de cierre
+    document.getElementById(`${p.id}-cerrar`).addEventListener("click", () => {
+      overlay.classList.remove("visible");
+    });
+    overlay.addEventListener("click", e => {
+      if (e.target === overlay) overlay.classList.remove("visible");
+    });
+  });
+}
+
+function abrirPersonaje(id) {
+  const p = PERSONAJES.find(p => p.id === id);
+  if (!p) return;
+  document.getElementById(`overlay-${p.id}`).classList.add("visible");
+  if (p.confetti) lanzarConfetti(false);
+  audioUnlock.currentTime = 0;
+  audioUnlock.volume = 0.6;
+  audioUnlock.play().catch(() => {});
+}
+
+
+
 /* ────────────────────────────────────────────────
    PALABRAS MALSONANTES — editá a gusto
    ──────────────────────────────────────────────── */
@@ -1544,17 +1774,12 @@ campoSecreto.addEventListener("keydown", e => {
       renderGrilla();
       mostrarToast("✨ Todos los cupones reseteados!");
     }
-  } else if (accion === "buu-modal") {
-  const info = MENSAJES_SECRETOS["buu"];
-  document.querySelector(".buu-titulo").textContent = info.titulo;
-  document.querySelector(".buu-texto").textContent  = info.texto;
-  document.getElementById("overlay-buu").classList.add("visible");
-  lanzarConfetti(false);
-}
-  else if (accion) {
+  } 
+  else if (PERSONAJES.find(p => p.contrasena === val)) {
+  abrirPersonaje(PERSONAJES.find(p => p.contrasena === val).id);
+} else if (accion) {
   mostrarModalSecreto(accion);
-}
-  else {
+  } else {
     const pista = buscarPistaTroll(val);
     mostrarToast(pista);
   }
@@ -1586,13 +1811,7 @@ document.getElementById("overlay-secreto").addEventListener("click", e => {
 });
 
 
-document.getElementById("buu-cerrar").addEventListener("click", () => {
-  document.getElementById("overlay-buu").classList.remove("visible");
-});
-document.getElementById("overlay-buu").addEventListener("click", e => {
-  if (e.target === document.getElementById("overlay-buu"))
-    document.getElementById("overlay-buu").classList.remove("visible");
-});
+
 
 function lanzarParticulasSecretas() {
   const cont   = document.getElementById("particulas-secreto");
@@ -1742,6 +1961,7 @@ crearFraseFondo();
    INICIO
    ══════════════════════════════════════════════ */
 renderGrilla();
+iniciarPersonajes();
 /* ══════════════════════════════════════════════
    CONTADOR DÍAS JUNTOS
    ══════════════════════════════════════════════ */
