@@ -189,11 +189,11 @@ const CUPONES_ROMANTICOS = [
   },
   { emoji: "🛌", titulo: "Cupón para dormir hasta tarde",  descripcion: "Un fin de semana sin que nadie te despierte.",                   efecto: ["efecto-corazones", "efecto-sparkle"] },
   { emoji: "🌅", titulo: "Cupón para una escapada",        descripcion: "A donde quieras ir juntos. Sin peros.",                          efecto: [ "efecto-aura-corazones", "efecto-sparkle"] },
-  { emoji: "🎶", titulo: "Cupón para bailar en casa",      descripcion: "Tu playlist, yo te sigo. Sin importar la hora.",                 efecto: ["efecto-corazones", "efecto-sparkle"] },
+  { emoji: "img/goku_dancing.gif",emojiBackup: "🎶" ,titulo: "Cupón para bailar en casa",      descripcion: "Tu playlist, yo te sigo. Sin importar la hora.",                 efecto: ["efecto-corazones", "efecto-sparkle"] },
   { emoji: "🍳", titulo: "Cupón para desayuno en cama",    descripcion: "Me levanto primero y te lo llevo. Prometido.",                   efecto: ["efecto-corazones", "efecto-brillo"] },
   { emoji: "💌", titulo: "Cupón para una carta de amor",   descripcion: "A mano, lo que siento, cuando lo pidas.",                        efecto: ["efecto-corazones", "efecto-sparkle"] },
   { emoji: "✨", titulo: "Cupón comodín",                  descripcion: "Para lo que se te ocurra. Vale para cualquier cosa.",             efecto: ["efecto-sparkle", "efecto-golden"] },
-  { emoji: "🏃", titulo: "Cupón para Ir a verte",          descripcion: "Este cupón activa modo: no aguanto más y voy a verte",             efecto: ["efecto-corazones", "efecto-glow"] },
+  { emoji: "img/goku-run.gif", emojiBackup: "🏃", titulo: "Cupón para Ir a verte",          descripcion: "Este cupón activa modo: no aguanto más y voy a verte",             efecto: ["efecto-corazones", "efecto-glow"] },
   { emoji: "📸", titulo: "Cupón para Sesión de fotos obligatoria", descripcion: "Este cupón te obliga a sacarte fotos conmigo. no importa si decis que salis mal, si no queres  y si te haces el dificil",             efecto: ["efecto-corazones", "efecto-sparkle"] },
   { emoji: "👂", titulo: "Cupón para mandarte un audio largo",   descripcion: "Te mando un audio de lo que pienso cuando no te lo digo. Sin resumir.", efecto: ["efecto-aura-corazones", "efecto-sparkle"] },
 
@@ -1443,7 +1443,7 @@ function renderGrilla() {
     <button class="btn-canjear" data-idx="${idx}" ${esCanj ? "disabled" : ""}>Canjear</button>
     <div class="vale-cuerpo">
       <div class="vale-emoji">
-        ${v.emoji.includes("/") || v.emoji.endsWith(".png") || v.emoji.endsWith(".jpg") || v.emoji.endsWith(".webp")
+        ${v.emoji.includes("/") || v.emoji.endsWith(".png") || v.emoji.endsWith(".jpg") || v.emoji.endsWith(".webp") || v.emoji.endsWith(".gif")
           ? `<img src="${v.emoji}" alt="emoji" class="vale-emoji-img" onerror="this.replaceWith(document.createTextNode('${v.emojiBackup || '✨'}'))">`
           : v.emoji
         }
@@ -1514,7 +1514,7 @@ grilla.addEventListener("click", e => {
   cuponEnCanje = idx;
   const esSexy = v.tipo === "sexy";
 
-  if (v.emoji.includes("/") || v.emoji.endsWith(".png") || v.emoji.endsWith(".jpg")) {
+  if (v.emoji.includes("/") || v.emoji.endsWith(".png") || v.emoji.endsWith(".jpg") || v.emoji.endsWith(".gif")) {
   modalEmoji.innerHTML = `<img src="${v.emoji}" style="width:2.5rem;height:2.5rem;object-fit:contain;" onerror="this.replaceWith(document.createTextNode('${v.emojiBackup || '✨'}'))">`;
 } else {
   modalEmoji.textContent = v.emoji;
@@ -1967,17 +1967,30 @@ iniciarPersonajes();
    ══════════════════════════════════════════════ */
 (function() {
   // ✏️ CAMBIÁ esta fecha por la fecha real en que empezaron
-  const FECHA_INICIO = new Date("2025-09-29");
+  const FECHA_INICIO = new Date("2025-08-29");
 
   const el = document.getElementById("dias-juntos");
   if (!el) return;
 
-  function actualizar() {
-    const hoy  = new Date();
-    const diff = Math.floor((hoy - FECHA_INICIO) / (1000 * 60 * 60 * 24));
-    const años  = Math.floor(diff / 365);
-    const meses = Math.floor((diff % 365) / 30);
-    const dias  = diff % 30;
+function actualizar() {
+    const hoy = new Date();
+
+    let años  = hoy.getFullYear() - FECHA_INICIO.getFullYear();
+    let meses = hoy.getMonth()    - FECHA_INICIO.getMonth();
+    let dias  = hoy.getDate()     - FECHA_INICIO.getDate();
+
+    // Ajustar si los días son negativos
+    if (dias < 0) {
+      meses--;
+      const mesAnterior = new Date(hoy.getFullYear(), hoy.getMonth(), 0);
+      dias += mesAnterior.getDate();
+    }
+
+    // Ajustar si los meses son negativos
+    if (meses < 0) {
+      años--;
+      meses += 12;
+    }
 
     let texto = "";
     if (años > 0)  texto += `${años} año${años > 1 ? "s" : ""}, `;
