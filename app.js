@@ -42,8 +42,8 @@ const CONFIG_EMAIL = {
 const CONFIG_SYNC = {
   BIN_ID:  "69fad65d856a682189b079e6",
   API_KEY: "$2a$10$rjQmMhPuWojkLBK3IRhTIe3q.PjkoNDlELyd8oBP3o7M8I.KQmjgq",
-  URL:     () => `https://api.jsonbin.io/v3/b/${CONFIG_SYNC.BIN_ID}`,
 };
+const JSONBIN_URL = `https://api.jsonbin.io/v3/b/${CONFIG_SYNC.BIN_ID}`;
 
 /* ────────────────────────────────────────────────
    TEMPORIZADOR — fecha de reinicio
@@ -602,7 +602,7 @@ let canjeados = JSON.parse(localStorage.getItem("cupones_canjeados_v3") || "{}")
 
 async function cargarCanjeados() {
   try {
-    const res = await fetch(CONFIG_SYNC.URL() + "/latest", {
+    const res = await fetch(JSONBIN_URL + "/latest", {
       headers: { "X-Master-Key": CONFIG_SYNC.API_KEY }
     });
     const data = await res.json();
@@ -619,7 +619,7 @@ async function cargarCanjeados() {
 async function guardarCanjeados() {
   try {
     localStorage.setItem("cupones_canjeados_v3", JSON.stringify(canjeados));
-    await fetch(CONFIG_SYNC.URL(), {
+    await fetch(JSONBIN_URL, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
