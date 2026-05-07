@@ -415,6 +415,7 @@ const CONTRASENAS_SECRETAS = {
   "modo totita":                         "sexy-toggle",  // especial: igual que tota
   "amor":                           "reset-modo",
   "dev mode":                       "dev-toggle",
+  "tutorial":                       "reset-tutorial",
 };
 
 /* ────────────────────────────────────────────────
@@ -843,7 +844,7 @@ function reproducirAudio(audioTarget) {
 
 
 // Claves que NO se cuentan como secretos (solo para el dev)
-const CLAVES_EXCLUIDAS = ["dev mode", "reset cupones", "amor"];
+const CLAVES_EXCLUIDAS = ["dev mode", "reset cupones", "amor", "tutorial"];
 
 function registrarSecreto(val) {
   if (CLAVES_EXCLUIDAS.includes(val)) return;
@@ -2387,6 +2388,12 @@ campoSecreto.addEventListener("keydown", e => {
     mostrarToast(mododev ? "🛠️ Modo dev ON" : "🛠️ Modo dev OFF");
     renderGrilla();
 
+  } else if (accion === "reset-tutorial") {
+  localStorage.removeItem("goku_tutorial_cerrado");
+  localStorage.removeItem("goku_visto_antes");
+  mostrarToast("🐉 Goku vuelve en unos segundos...");
+  setTimeout(() => iniciarGokuTutorial(), 1500);
+
   } else if (PERSONAJES.find(p => p.contrasena === val)) {
     const personaje = PERSONAJES.find(p => p.contrasena === val);
     abrirPersonaje(personaje.id);
@@ -2723,6 +2730,7 @@ const TIPS_TUTORIAL = [
   "¿Ya probaste activar algun modo? 🎮",
   "", // ← índice 7, se llena dinámicamente
   "Si cerrás esta ventana voy a desaparecer por 24 horas completas 😭",
+  "ₛᵢ ₑₛᶜᵣᵢᵦₑₛ ₜᵤₜₒᵣᵢₐₗ ₚᵤₑᴰₒ ₗₗₑᴳₐᵣ ₐ ᵥₒₗᵥₑᵣ",
   "Hacé click en mí para ocultarme POR 24 HORAS KIN PORFAVOR NO😄",
 ];
 
