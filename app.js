@@ -710,28 +710,40 @@ let canjeados = JSON.parse(localStorage.getItem("cupones_canjeados_v3") || "{}")
 
 // REEMPLAZÁ la función cargarCanjeados() completa por esta:
 async function cargarCanjeados() {
-  // 1. Render inmediato con localStorage (sin esperar red)
+  // 1. Render inmediato con localStorage
   renderGrilla();
 
-  // 2. JSONBin con timeout de 3 segundos
   try {
     const fetchPromise = fetch(JSONBIN_URL + "/latest", {
       headers: { "X-Master-Key": CONFIG_SYNC.API_KEY }
     });
 
     const timeoutPromise = new Promise((_, reject) =>
-      setTimeout(() => reject(new Error("timeout")), 3000)
+      setTimeout(() => reject(new Error("timeout")), 5000)
     );
 
     const res  = await Promise.race([fetchPromise, timeoutPromise]);
     const data = await res.json();
     const remoto = data.record || {};
 
-    // Solo re-renderiza si el remoto tiene diferencias reales
-    const hayDiferencias = Object.keys(remoto).some(k => !canjeados[k]);
-    Object.assign(canjeados, remoto);
+    // Sincronizar cupones canjeados
+    const canjeadosRemoto = remoto.canjeados || {};
+    const hayDiferenciasCupones = Object.keys(canjeadosRemoto).some(k => !canjeados[k]);
+    Object.assign(canjeados, canjeadosRemoto);
     localStorage.setItem("cupones_canjeados_v3", JSON.stringify(canjeados));
-    if (hayDiferencias) renderGrilla();
+
+    // Sincronizar secretos descubiertos
+    const secretosRemoto = remoto.secretos || [];
+    const hayDiferenciasSecretos = secretosRemoto.some(s => !secretosDescubiertos.includes(s));
+    secretosRemoto.forEach(s => {
+      if (!secretosDescubiertos.includes(s)) secretosDescubiertos.push(s);
+    });
+    localStorage.setItem("secretos_descubiertos", JSON.stringify(secretosDescubiertos));
+
+    if (hayDiferenciasCupones || hayDiferenciasSecretos) {
+      renderGrilla();
+      actualizarContadorSecretos();
+    }
 
   } catch (err) {
     console.warn("JSONBin no disponible, usando local:", err.message);
@@ -741,13 +753,18 @@ async function cargarCanjeados() {
 async function guardarCanjeados() {
   try {
     localStorage.setItem("cupones_canjeados_v3", JSON.stringify(canjeados));
+    localStorage.setItem("secretos_descubiertos", JSON.stringify(secretosDescubiertos));
+
     await fetch(JSONBIN_URL, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         "X-Master-Key": CONFIG_SYNC.API_KEY
       },
-      body: JSON.stringify(canjeados)
+      body: JSON.stringify({
+        canjeados,
+        secretos: secretosDescubiertos
+      })
     });
   } catch (err) {
     console.warn("Error al guardar en la nube:", err);
@@ -829,10 +846,11 @@ function reproducirAudio(audioTarget) {
 const CLAVES_EXCLUIDAS = ["dev mode", "reset cupones", "amor"];
 
 function registrarSecreto(val) {
-  if (CLAVES_EXCLUIDAS.includes(val)) return; // ← no registrar
+  if (CLAVES_EXCLUIDAS.includes(val)) return;
   if (!secretosDescubiertos.includes(val)) {
     secretosDescubiertos.push(val);
     localStorage.setItem("secretos_descubiertos", JSON.stringify(secretosDescubiertos));
+    guardarCanjeados(); // ← sincronizar con la nube
   }
   actualizarContadorSecretos();
 }
